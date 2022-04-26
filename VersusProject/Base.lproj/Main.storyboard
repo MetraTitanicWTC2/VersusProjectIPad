@@ -44,6 +44,19 @@
                     <view key="view" contentMode="scaleToFill" id="ILe-RJ-wpD">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdQ-zb-mar">
+                                <rect key="frame" x="403" y="1139" width="219" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Fight!">
+                                    <fontDescription key="titleFontDescription" type="italicSystem" pointSize="81"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="Q4H-eP-Sim" kind="show" id="3pl-r6-KgW"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="2qZ-02-GrO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -52,6 +65,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5VD-7K-1jn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1504" y="82"/>
+        </scene>
+        <!--Third View Controller-->
+        <scene sceneID="BMK-tw-rRU">
+            <objects>
+                <viewController id="Q4H-eP-Sim" customClass="ThirdViewController" customModule="VersusProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eyp-jb-u55">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="QKG-it-ap4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hlx-BR-DVB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Mj-F8-gb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2358" y="80"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cfC-oF-o3f">
