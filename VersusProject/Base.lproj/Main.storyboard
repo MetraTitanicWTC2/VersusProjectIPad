@@ -27,9 +27,13 @@
                                     <segue destination="dA4-eB-aLx" kind="show" id="HBw-7O-6A5"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="9kA-6g-KUq">
+                                <rect key="frame" x="165" y="250" width="695" height="407"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Jzv-IS-qqP"/>
                 </viewController>
@@ -102,6 +106,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logo" width="1901" height="745"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
