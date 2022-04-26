@@ -23,6 +23,9 @@
                                 <buttonConfiguration key="configuration" style="tinted" title="Start">
                                     <fontDescription key="titleFontDescription" type="italicSystem" pointSize="81"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="dA4-eB-aLx" kind="show" id="HBw-7O-6A5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -33,6 +36,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="744.140625" y="81.698389458272317"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="JsX-XY-977">
+            <objects>
+                <viewController id="dA4-eB-aLx" customClass="SecondViewController" customModule="VersusProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ILe-RJ-wpD">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="2qZ-02-GrO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tiu-Lx-GiT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5VD-7K-1jn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1504" y="82"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cfC-oF-o3f">
