@@ -9,12 +9,12 @@ import UIKit
 
 class ThirdViewController: UIViewController {
 
+    var playerChoice = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
        
-        var playerChoice = 0
-        
         let rexa = character(name: "Rexa", health: 1500, defense: 0.2, attackLow: 550, attackHigh: 650, heal: 1.35)
         let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, heal: 1.1)
         let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, heal: 1.25)
@@ -27,6 +27,6 @@ class ThirdViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    
 
 }
