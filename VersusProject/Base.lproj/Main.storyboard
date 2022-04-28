@@ -60,25 +60,41 @@
                                     <segue destination="Q4H-eP-Sim" kind="show" id="3pl-r6-KgW"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rexa" translatesAutoresizingMaskIntoConstraints="NO" id="K94-5u-ZYF">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rexa" translatesAutoresizingMaskIntoConstraints="NO" id="K94-5u-ZYF">
                                 <rect key="frame" x="0.0" y="121" width="229" height="318"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hc3-ef-teD" appends="YES" id="ASF-wb-Vbb"/>
+                                </connections>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Arcturus" translatesAutoresizingMaskIntoConstraints="NO" id="Sxp-6n-75W">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Arcturus" translatesAutoresizingMaskIntoConstraints="NO" id="Sxp-6n-75W">
                                 <rect key="frame" x="262" y="121" width="240" height="318"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="JRv-tJ-ot5" appends="YES" id="yM4-D1-fzX"/>
+                                </connections>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8NC-FO-cE5">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8NC-FO-cE5">
                                 <rect key="frame" x="524" y="121" width="240" height="318"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Z4T-FV-RJ1" appends="YES" id="Cqb-xg-1bx"/>
+                                </connections>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PXc-Wa-pYR">
                                 <rect key="frame" x="393" y="765" width="240" height="318"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47I-wL-hqY">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47I-wL-hqY">
                                 <rect key="frame" x="784" y="121" width="240" height="318"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="9iT-RN-KKu" appends="YES" id="BWI-sA-Kxo"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rexa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lj3-34-CoH">
                                 <rect key="frame" x="20" y="447" width="209" height="63"/>
@@ -168,8 +184,31 @@ Attack: 1500
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="tiu-Lx-GiT"/>
+                    <connections>
+                        <outlet property="selectionImage" destination="PXc-Wa-pYR" id="FsG-cO-Iwq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5VD-7K-1jn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hc3-ef-teD">
+                    <connections>
+                        <action selector="whenRexaTapped:" destination="dA4-eB-aLx" id="4U7-W8-0V3"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="JRv-tJ-ot5">
+                    <connections>
+                        <action selector="whenArcturusTapped:" destination="dA4-eB-aLx" id="FxK-bD-oSW"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Z4T-FV-RJ1">
+                    <connections>
+                        <action selector="whenDeimosTapped:" destination="dA4-eB-aLx" id="ikC-sW-j4x"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="9iT-RN-KKu">
+                    <connections>
+                        <action selector="whenFermiTapped:" destination="dA4-eB-aLx" id="Byv-9d-fzU"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1503.515625" y="81.698389458272317"/>
         </scene>
