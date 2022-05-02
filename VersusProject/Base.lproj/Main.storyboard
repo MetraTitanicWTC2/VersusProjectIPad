@@ -314,6 +314,7 @@ Attack: 1500
                     <connections>
                         <outlet property="enemyHealthLabel" destination="pmr-BX-BDz" id="MOM-k2-zjf"/>
                         <outlet property="enemyImageView" destination="ahw-hG-97b" id="gCg-1T-hx1"/>
+                        <outlet property="playerHealthLabel" destination="YXU-Fl-UjJ" id="Dmo-V5-WIe"/>
                         <outlet property="playerImageView" destination="iSc-sA-0ww" id="exY-R1-Soz"/>
                     </connections>
                 </viewController>

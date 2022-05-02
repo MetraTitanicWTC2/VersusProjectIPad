@@ -11,6 +11,7 @@ class ThirdViewController: UIViewController {
 
     var playerChoice = 0
     var enemyHealth = 0
+    var playerHealth = 0
     
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     
@@ -21,6 +22,7 @@ class ThirdViewController: UIViewController {
    
     
     
+    @IBOutlet weak var playerHealthLabel: UILabel!
     @IBOutlet weak var enemyHealthLabel: UILabel!
     @IBOutlet weak var enemyImageView: UIImageView!
     @IBOutlet weak var playerImageView: UIImageView!
@@ -36,6 +38,8 @@ class ThirdViewController: UIViewController {
         playerImageView.image = UIImage(named: nameArracy[playerChoice])
         enemyImageView.image = UIImage(named: enemySelection!.name)
        
+        playerHealth = playerSelection.health
+        playerHealthLabel.text = "Health: \(playerHealth)"
         enemyHealth = enemySelection!.health
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         

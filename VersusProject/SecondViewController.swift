@@ -46,7 +46,7 @@ class SecondViewController: UIViewController {
     
     @IBAction func whenFermiTapped(_ sender: UITapGestureRecognizer) {
         playerChoice = 3
-        selectedImage = "Deimos"
+        selectedImage = "Fermi"
         selectionImage.image = UIImage(named: selectedImage)
         playerSelected = true
     }
