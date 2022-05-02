@@ -45,7 +45,13 @@ class ThirdViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func whenAttacking(_ sender: Any) {
+    }
+    @IBAction func whenDefending(_ sender: Any) {
+    }
+    @IBAction func whenHealing(_ sender: Any) {
+    }
+    
     
 
  
