@@ -305,6 +305,7 @@ Attack: 1500
                     <connections>
                         <outlet property="enemyHealthLabel" destination="pmr-BX-BDz" id="MOM-k2-zjf"/>
                         <outlet property="enemyImageView" destination="ahw-hG-97b" id="gCg-1T-hx1"/>
+                        <outlet property="playerHealthLabel" destination="YXU-Fl-UjJ" id="Dmo-V5-WIe"/>
                         <outlet property="playerImageView" destination="iSc-sA-0ww" id="exY-R1-Soz"/>
                     </connections>
                 </viewController>
@@ -334,7 +335,7 @@ Attack: 1500
     <resources>
         <image name="Arcturus" width="2550" height="3300"/>
         <image name="Deimos" width="1427" height="1848"/>
-        <image name="Fermi" width="1080" height="1920"/>
+        <image name="Fermi" width="1489" height="1941"/>
         <image name="Rexa" width="1482" height="1926"/>
         <image name="logo" width="1901" height="745"/>
         <systemColor name="labelColor">
