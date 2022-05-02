@@ -23,7 +23,7 @@ class ThirdViewController: UIViewController {
     let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, heal: 1.2)
    
     
-    
+
     @IBOutlet weak var playerHealthLabel: UILabel!
     @IBOutlet weak var enemyHealthLabel: UILabel!
     @IBOutlet weak var enemyImageView: UIImageView!
