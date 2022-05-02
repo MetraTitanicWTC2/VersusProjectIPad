@@ -52,6 +52,9 @@ class ThirdViewController: UIViewController {
     @IBAction func whenAttacking(_ sender: Any) {
         let attack = Int.random(in: playerAttackLow...playerAttackHigh)
         enemyHealth -= attack
+        if enemyHealth < 0 {
+            enemyHealth = 0
+        }
         enemyHealthLabel.text = "Health: \(enemyHealth)"
     }
     @IBAction func whenDefending(_ sender: Any) {
