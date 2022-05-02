@@ -10,7 +10,10 @@ import UIKit
 class ThirdViewController: UIViewController {
 
     var playerChoice = 0
+    let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     
+    
+    @IBOutlet weak var playerImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +26,8 @@ class ThirdViewController: UIViewController {
         let characterArray:Array<character> = [rexa, arcturus, deimos, fermi]
         let playerSelection = characterArray[playerChoice]
         let enemySelection = characterArray.randomElement()
+        
+        playerImageView.image = UIImage(named: nameArracy[playerChoice])
         
         // Do any additional setup after loading the view.
     }

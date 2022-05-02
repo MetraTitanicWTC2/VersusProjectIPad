@@ -301,6 +301,9 @@ Attack: 1500
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Hlx-BR-DVB"/>
+                    <connections>
+                        <outlet property="playerImageView" destination="iSc-sA-0ww" id="exY-R1-Soz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Mj-F8-gb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
