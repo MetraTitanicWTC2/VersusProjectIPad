@@ -12,6 +12,8 @@ class ThirdViewController: UIViewController {
     var playerChoice = 0
     var enemyHealth = 0
     var playerHealth = 0
+    var playerAttackLow = 0
+    var playerAttackHigh = 0
     
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     
@@ -43,9 +45,14 @@ class ThirdViewController: UIViewController {
         enemyHealth = enemySelection!.health
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         
+        playerAttackLow = playerSelection.attackLow
+        playerAttackHigh = playerSelection.attackHigh
         // Do any additional setup after loading the view.
     }
     @IBAction func whenAttacking(_ sender: Any) {
+        let attack = Int.random(in: playerAttackLow...playerAttackHigh)
+        enemyHealth -= attack
+        enemyHealthLabel.text = "Health: \(enemyHealth)"
     }
     @IBAction func whenDefending(_ sender: Any) {
     }
@@ -54,7 +61,7 @@ class ThirdViewController: UIViewController {
     
     
 
- 
+   
     
     
 }
