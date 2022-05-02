@@ -57,7 +57,7 @@
                                     <fontDescription key="titleFontDescription" type="italicSystem" pointSize="81"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="Q4H-eP-Sim" kind="show" id="3pl-r6-KgW"/>
+                                    <action selector="whenFightTapped:" destination="dA4-eB-aLx" eventType="touchUpInside" id="4FU-7F-0ZC"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rexa" translatesAutoresizingMaskIntoConstraints="NO" id="K94-5u-ZYF">
@@ -186,6 +186,7 @@ Attack: 1500
                     <navigationItem key="navigationItem" id="tiu-Lx-GiT"/>
                     <connections>
                         <outlet property="selectionImage" destination="PXc-Wa-pYR" id="FsG-cO-Iwq"/>
+                        <segue destination="Q4H-eP-Sim" kind="show" identifier="secondToThirdSegue" id="Oq3-tS-i25"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5VD-7K-1jn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
