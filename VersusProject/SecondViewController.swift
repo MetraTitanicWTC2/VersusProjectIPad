@@ -11,6 +11,7 @@ class SecondViewController: UIViewController {
 
     var playerChoice = 0
     var selectedImage = ""
+    var playerSelected = false
     
     @IBOutlet weak var selectionImage: UIImageView!
     override func viewDidLoad() {
@@ -25,12 +26,14 @@ class SecondViewController: UIViewController {
         playerChoice = 0
         selectedImage = "Rexa"
         selectionImage.image = UIImage(named: selectedImage)
+        playerSelected = true
     }
     
     @IBAction func whenArcturusTapped(_ sender: UITapGestureRecognizer) {
         playerChoice = 1
         selectedImage = "Arcturus"
         selectionImage.image = UIImage(named: selectedImage)
+        playerSelected = true
     }
     
     
@@ -38,14 +41,27 @@ class SecondViewController: UIViewController {
         playerChoice = 2
         selectedImage = "Deimos"
         selectionImage.image = UIImage(named: selectedImage)
+        playerSelected = true
     }
     
     @IBAction func whenFermiTapped(_ sender: UITapGestureRecognizer) {
         playerChoice = 3
         selectedImage = "Deimos"
         selectionImage.image = UIImage(named: selectedImage)
+        playerSelected = true
     }
     
+    @IBAction func whenFightTapped(_ sender: UIButton) {
+        if playerSelected == true {
+            performSegue(withIdentifier: "secondToThirdSegue", sender: nil)
+        } else {
+            let selectAlert = UIAlertController(title: "Please select a fighter", message: nil, preferredStyle: UIAlertController.Style.alert)
+            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            selectAlert.addAction(okButton)
+            present(selectAlert, animated: true)
+        }
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let fvc = segue.destination as! ThirdViewController
