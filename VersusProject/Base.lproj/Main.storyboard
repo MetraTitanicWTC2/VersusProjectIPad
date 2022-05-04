@@ -268,7 +268,7 @@ Attack: 1500
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your attack log" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7R4-cq-9o6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your attack log" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7R4-cq-9o6">
                                 <rect key="frame" x="650" y="645" width="332" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -313,8 +313,10 @@ Attack: 1500
                     </view>
                     <navigationItem key="navigationItem" id="Hlx-BR-DVB"/>
                     <connections>
+                        <outlet property="enemyAttackLog" destination="mmv-Hr-aWA" id="nMQ-Qq-BiL"/>
                         <outlet property="enemyHealthLabel" destination="pmr-BX-BDz" id="MOM-k2-zjf"/>
                         <outlet property="enemyImageView" destination="ahw-hG-97b" id="gCg-1T-hx1"/>
+                        <outlet property="playerAttackLog" destination="7R4-cq-9o6" id="OEb-K8-koa"/>
                         <outlet property="playerHealthLabel" destination="YXU-Fl-UjJ" id="Dmo-V5-WIe"/>
                         <outlet property="playerImageView" destination="iSc-sA-0ww" id="exY-R1-Soz"/>
                         <segue destination="tg6-5n-YVc" kind="unwind" identifier="Menu" unwindAction="unwindToMenuWithSegue:" id="soh-kf-Hb2"/>

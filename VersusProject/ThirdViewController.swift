@@ -10,7 +10,6 @@ import UIKit
 class ThirdViewController: UIViewController {
 
     var playerChoice = 0
-    var enemyHealth = 0
     var playerHealth = 0
     var playerAttackLow = 0
     var playerAttackHigh = 0
@@ -47,6 +46,8 @@ class ThirdViewController: UIViewController {
         
         playerAttackLow = playerSelection.attackLow
         playerAttackHigh = playerSelection.attackHigh
+        enemyAttackLow = enemySelection!.attackLow
+        enemyAttackHigh = enemySelection!.attackHigh
         // Do any additional setup after loading the view.
         
     }
@@ -57,6 +58,7 @@ class ThirdViewController: UIViewController {
             enemyHealth = 0
         }
         enemyHealthLabel.text = "Health: \(enemyHealth)"
+        playerAttackLog.text = "You attacked for \(attack) damage!"
         if playerHealth <= 0 {
             view.isHidden = true
             let playerLoseAlert = UIAlertController(title: "You Lose!", message: nil, preferredStyle: UIAlertController.Style.alert)
@@ -73,6 +75,7 @@ class ThirdViewController: UIViewController {
             present(playerWinAlert, animated: true)
         }
         
+        enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
     }
     @IBAction func whenDefending(_ sender: Any) {
     }
@@ -81,7 +84,16 @@ class ThirdViewController: UIViewController {
     
     
 
-   
+    func enemyAttack(enemyAttackLow: Int, enemyAttackHigh: Int) {
+        var attack = Int.random(in: enemyAttackLow...enemyAttackHigh)
+        playerHealth -= attack
+        if playerHealth < 0 {
+            playerHealth = 0
+        }
+        playerHealthLabel.text = "Health: \(playerHealth)"
+        enemyAttackLog.text = "Enemy attacked for \(attack) damage!"
+        return
+    }
     
     
 }
