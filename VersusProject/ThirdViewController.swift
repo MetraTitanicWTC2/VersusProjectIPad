@@ -10,10 +10,14 @@ import UIKit
 class ThirdViewController: UIViewController {
 
     var playerChoice = 0
-    var enemyHealth = 0
     var playerHealth = 0
     var playerAttackLow = 0
     var playerAttackHigh = 0
+    
+    var enemyHealth = 0
+    var enemyAttackLow = 0
+    var enemyAttackHigh = 0
+    
     
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     
@@ -22,8 +26,11 @@ class ThirdViewController: UIViewController {
     let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, heal: 1.25)
     let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, heal: 1.2)
    
+
     
 
+    @IBOutlet weak var enemyAttackLog: UILabel!
+    @IBOutlet weak var playerAttackLog: UILabel!
     @IBOutlet weak var playerHealthLabel: UILabel!
     @IBOutlet weak var enemyHealthLabel: UILabel!
     @IBOutlet weak var enemyImageView: UIImageView!
@@ -35,7 +42,7 @@ class ThirdViewController: UIViewController {
          let characterArray:Array<character> = [rexa, arcturus, deimos, fermi]
          let playerSelection = characterArray[playerChoice]
          let enemySelection = characterArray.randomElement()
-        
+
         
         playerImageView.image = UIImage(named: nameArracy[playerChoice])
         enemyImageView.image = UIImage(named: enemySelection!.name)
@@ -47,6 +54,8 @@ class ThirdViewController: UIViewController {
         
         playerAttackLow = playerSelection.attackLow
         playerAttackHigh = playerSelection.attackHigh
+        enemyAttackLow = enemySelection!.attackLow
+        enemyAttackHigh = enemySelection!.attackHigh
         // Do any additional setup after loading the view.
     }
     @IBAction func whenAttacking(_ sender: Any) {
@@ -56,6 +65,9 @@ class ThirdViewController: UIViewController {
             enemyHealth = 0
         }
         enemyHealthLabel.text = "Health: \(enemyHealth)"
+        playerAttackLog.text = "You attacked for \(attack) damage!"
+        
+        enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
     }
     @IBAction func whenDefending(_ sender: Any) {
     }
@@ -64,7 +76,16 @@ class ThirdViewController: UIViewController {
     
     
 
-   
+    func enemyAttack(enemyAttackLow: Int, enemyAttackHigh: Int) {
+        var attack = Int.random(in: enemyAttackLow...enemyAttackHigh)
+        playerHealth -= attack
+        if playerHealth < 0 {
+            playerHealth = 0
+        }
+        playerHealthLabel.text = "Health: \(playerHealth)"
+        enemyAttackLog.text = "Enemy attacked for \(attack) damage!"
+        return
+    }
     
     
 }
