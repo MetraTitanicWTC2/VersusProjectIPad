@@ -14,6 +14,8 @@ class ThirdViewController: UIViewController {
     var playerAttackLow = 0
     var playerAttackHigh = 0
     
+    var enemyMaxHealth = 0
+    var enemyHeal = 0.0
     var enemyHealth = 0
     var enemyAttackLow = 0
     var enemyAttackHigh = 0
@@ -49,7 +51,9 @@ class ThirdViewController: UIViewController {
        
         playerHealth = playerSelection.health
         playerHealthLabel.text = "Health: \(playerHealth)"
+        enemyHeal = enemySelection!.heal
         enemyHealth = enemySelection!.health
+        enemyMaxHealth = enemySelection!.health
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         
         playerAttackLow = playerSelection.attackLow
@@ -70,6 +74,7 @@ class ThirdViewController: UIViewController {
         enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
     }
     @IBAction func whenDefending(_ sender: Any) {
+        enemyHealing(enemyHeal: enemyHeal, maxHealth: enemyMaxHealth)
     }
     @IBAction func whenHealing(_ sender: Any) {
     }
@@ -87,5 +92,22 @@ class ThirdViewController: UIViewController {
         return
     }
     
+    func enemyHealing(enemyHeal: Double, maxHealth: Int) {
+        let maxHealth = maxHealth
+        var tempHealth = enemyHealth
+        var doubleHealth = Double(enemyHealth) * enemyHeal
+        let totalHealed = maxHealth - Int(doubleHealth)
+        if Int(doubleHealth) > maxHealth {
+            enemyHealth = maxHealth
+            enemyHealthLabel.text = "Health: \(enemyHealth)"
+            enemyAttackLog.text = "Enemy healed to full health!"
+
+        } else {
+            enemyHealth = Int(doubleHealth)
+            enemyHealthLabel.text = "Health: \(enemyHealth)"
+            enemyAttackLog.text = "Enemy healed for \(totalHealed)!"
+
+        }
+    }
     
 }
