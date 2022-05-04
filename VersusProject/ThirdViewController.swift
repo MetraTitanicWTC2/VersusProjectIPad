@@ -14,6 +14,10 @@ class ThirdViewController: UIViewController {
     var playerAttackLow = 0
     var playerAttackHigh = 0
     
+    var enemyHealth = 0
+    var enemyAttackLow = 0
+    var enemyAttackHigh = 0
+    
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     
     let rexa = character(name: "Rexa", health: 1500, defense: 0.2, attackLow: 550, attackHigh: 650, heal: 1.35)
@@ -22,7 +26,8 @@ class ThirdViewController: UIViewController {
     let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, heal: 1.2)
    
     
-
+    @IBOutlet weak var enemyAttackLog: UILabel!
+    @IBOutlet weak var playerAttackLog: UILabel!
     @IBOutlet weak var playerHealthLabel: UILabel!
     @IBOutlet weak var enemyHealthLabel: UILabel!
     @IBOutlet weak var enemyImageView: UIImageView!
