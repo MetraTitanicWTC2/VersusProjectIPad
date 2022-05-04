@@ -22,7 +22,7 @@ class ThirdViewController: UIViewController {
     
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     
-    let rexa = character(name: "Rexa", health: 1500, defense: 0.2, attackLow: 550, attackHigh: 650, heal: 1.35)
+    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 450, attackHigh: 550, heal: 1.35)
     let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, heal: 1.1)
     let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, heal: 1.25)
     let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, heal: 1.2)
@@ -72,7 +72,13 @@ class ThirdViewController: UIViewController {
             view.isHidden = true
             let playerLoseAlert = UIAlertController(title: "You Lose!", message: nil, preferredStyle: UIAlertController.Style.alert)
             let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
+            let tryAgain = UIAlertAction(title: "Try again?", style: .default, handler: {action in
+                self.enemyHealth = self.enemyMaxHealth
+                self.playerAttackLog.text = ""
+                self.enemyAttackLog.text = ""
+            })
             playerLoseAlert.addAction(menu)
+            playerLoseAlert.addAction(tryAgain)
             present(playerLoseAlert, animated: true)
         }
     
@@ -80,8 +86,15 @@ class ThirdViewController: UIViewController {
             view.isHidden = true
             let playerWinAlert = UIAlertController(title: "You Win!", message: nil, preferredStyle: UIAlertController.Style.alert)
             let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
+            let tryAgain = UIAlertAction(title: "Try again?", style: .default, handler: {action in
+                self.enemyHealth = self.enemyMaxHealth
+                self.playerAttackLog.text = ""
+                self.enemyAttackLog.text = ""
+            })
+            playerWinAlert.addAction(tryAgain)
             playerWinAlert.addAction(menu)
             present(playerWinAlert, animated: true)
+            
         }
         
         enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
