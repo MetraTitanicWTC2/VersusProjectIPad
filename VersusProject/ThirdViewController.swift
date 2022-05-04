@@ -9,6 +9,8 @@ import UIKit
 
 class ThirdViewController: UIViewController {
 
+    var playerMaxHealth = 0
+    var playerHeal = 0.0
     var playerChoice = 0
     var playerHealth = 0
     var playerAttackLow = 0
@@ -47,6 +49,8 @@ class ThirdViewController: UIViewController {
         enemyImageView.image = UIImage(named: enemySelection!.name)
        
         playerHealth = playerSelection.health
+        playerMaxHealth = playerSelection.health
+        playerHeal = playerSelection.heal
         playerHealthLabel.text = "Health: \(playerHealth)"
         enemyHeal = enemySelection!.heal
         enemyHealth = enemySelection!.health
@@ -103,6 +107,19 @@ class ThirdViewController: UIViewController {
         enemyHealing(enemyHeal: enemyHeal, maxHealth: enemyMaxHealth)
     }
     @IBAction func whenHealing(_ sender: Any) {
+        let doubleHealth = Double(playerHealth) * enemyHeal
+        let totalHealed = playerMaxHealth - Int(doubleHealth)
+        if Int(doubleHealth) > playerMaxHealth {
+            playerHealth = playerMaxHealth
+            playerHealthLabel.text = "Health: \(playerHealth)"
+            playerAttackLog.text = "You healed to full health!"
+
+        } else {
+            playerHealth = Int(doubleHealth)
+            playerHealthLabel.text = "Health: \(playerHealth)"
+            playerAttackLog.text = "You healed for \(totalHealed)!"
+
+        }
     }
     
     
@@ -120,8 +137,7 @@ class ThirdViewController: UIViewController {
     
     func enemyHealing(enemyHeal: Double, maxHealth: Int) {
         let maxHealth = maxHealth
-        var tempHealth = enemyHealth
-        var doubleHealth = Double(enemyHealth) * enemyHeal
+        let doubleHealth = Double(enemyHealth) * enemyHeal
         let totalHealed = maxHealth - Int(doubleHealth)
         if Int(doubleHealth) > maxHealth {
             enemyHealth = maxHealth
