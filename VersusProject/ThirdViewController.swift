@@ -48,14 +48,31 @@ class ThirdViewController: UIViewController {
         playerAttackLow = playerSelection.attackLow
         playerAttackHigh = playerSelection.attackHigh
         // Do any additional setup after loading the view.
+        
     }
-    @IBAction func whenAttacking(_ sender: Any) {
+        @IBAction func whenAttacking(_ sender: Any) {
         let attack = Int.random(in: playerAttackLow...playerAttackHigh)
         enemyHealth -= attack
         if enemyHealth < 0 {
             enemyHealth = 0
         }
         enemyHealthLabel.text = "Health: \(enemyHealth)"
+        if playerHealth <= 0 {
+            view.isHidden = true
+            let playerLoseAlert = UIAlertController(title: "You Lose!", message: nil, preferredStyle: UIAlertController.Style.alert)
+            let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
+            playerLoseAlert.addAction(menu)
+            present(playerLoseAlert, animated: true)
+        }
+    
+        if enemyHealth <= 0 {
+            view.isHidden = true
+            let playerWinAlert = UIAlertController(title: "You Win!", message: nil, preferredStyle: UIAlertController.Style.alert)
+            let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
+            playerWinAlert.addAction(menu)
+            present(playerWinAlert, animated: true)
+        }
+        
     }
     @IBAction func whenDefending(_ sender: Any) {
     }
