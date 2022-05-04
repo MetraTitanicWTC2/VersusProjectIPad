@@ -20,7 +20,6 @@ class ThirdViewController: UIViewController {
     var enemyAttackLow = 0
     var enemyAttackHigh = 0
     
-    
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     
     let rexa = character(name: "Rexa", health: 1500, defense: 0.2, attackLow: 550, attackHigh: 650, heal: 1.35)
@@ -28,9 +27,7 @@ class ThirdViewController: UIViewController {
     let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, heal: 1.25)
     let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, heal: 1.2)
    
-
     
-
     @IBOutlet weak var enemyAttackLog: UILabel!
     @IBOutlet weak var playerAttackLog: UILabel!
     @IBOutlet weak var playerHealthLabel: UILabel!
@@ -44,7 +41,7 @@ class ThirdViewController: UIViewController {
          let characterArray:Array<character> = [rexa, arcturus, deimos, fermi]
          let playerSelection = characterArray[playerChoice]
          let enemySelection = characterArray.randomElement()
-
+        
         
         playerImageView.image = UIImage(named: nameArracy[playerChoice])
         enemyImageView.image = UIImage(named: enemySelection!.name)
@@ -61,8 +58,9 @@ class ThirdViewController: UIViewController {
         enemyAttackLow = enemySelection!.attackLow
         enemyAttackHigh = enemySelection!.attackHigh
         // Do any additional setup after loading the view.
+        
     }
-    @IBAction func whenAttacking(_ sender: Any) {
+        @IBAction func whenAttacking(_ sender: Any) {
         let attack = Int.random(in: playerAttackLow...playerAttackHigh)
         enemyHealth -= attack
         if enemyHealth < 0 {
@@ -70,6 +68,21 @@ class ThirdViewController: UIViewController {
         }
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         playerAttackLog.text = "You attacked for \(attack) damage!"
+        if playerHealth <= 0 {
+            view.isHidden = true
+            let playerLoseAlert = UIAlertController(title: "You Lose!", message: nil, preferredStyle: UIAlertController.Style.alert)
+            let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
+            playerLoseAlert.addAction(menu)
+            present(playerLoseAlert, animated: true)
+        }
+    
+        if enemyHealth <= 0 {
+            view.isHidden = true
+            let playerWinAlert = UIAlertController(title: "You Win!", message: nil, preferredStyle: UIAlertController.Style.alert)
+            let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
+            playerWinAlert.addAction(menu)
+            present(playerWinAlert, animated: true)
+        }
         
         enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
     }
