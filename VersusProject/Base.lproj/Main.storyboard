@@ -319,6 +319,7 @@ Attack: 1500
                         <outlet property="playerAttackLog" destination="7R4-cq-9o6" id="OEb-K8-koa"/>
                         <outlet property="playerHealthLabel" destination="YXU-Fl-UjJ" id="Dmo-V5-WIe"/>
                         <outlet property="playerImageView" destination="iSc-sA-0ww" id="exY-R1-Soz"/>
+                        <outlet property="turnCounterLabel" destination="Pv0-qx-cQe" id="Sz7-bB-W1d"/>
                         <segue destination="tg6-5n-YVc" kind="unwind" identifier="Menu" unwindAction="unwindToMenuWithSegue:" id="soh-kf-Hb2"/>
                     </connections>
                 </viewController>

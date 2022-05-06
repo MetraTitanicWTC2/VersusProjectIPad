@@ -9,6 +9,7 @@ import UIKit
 
 class ThirdViewController: UIViewController {
 
+    var playerDefense = 0.0
     var playerMaxHealth = 0
     var playerHeal = 0.0
     var playerChoice = 0
@@ -30,6 +31,7 @@ class ThirdViewController: UIViewController {
     let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, heal: 1.2)
    
     
+    @IBOutlet weak var turnCounterLabel: UILabel!
     @IBOutlet weak var enemyAttackLog: UILabel!
     @IBOutlet weak var playerAttackLog: UILabel!
     @IBOutlet weak var playerHealthLabel: UILabel!
@@ -48,6 +50,7 @@ class ThirdViewController: UIViewController {
         playerImageView.image = UIImage(named: nameArracy[playerChoice])
         enemyImageView.image = UIImage(named: enemySelection!.name)
        
+        playerDefense = playerSelection.defense
         playerHealth = playerSelection.health
         playerMaxHealth = playerSelection.health
         playerHeal = playerSelection.heal
@@ -88,13 +91,18 @@ class ThirdViewController: UIViewController {
             present(playerWinAlert, animated: true)
         }
         
-        enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+         let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+        enemyAttackHealthUpdate(attack: enemyAttackValue)
     }
     @IBAction func whenDefending(_ sender: Any) {
-        enemyHealing(enemyHeal: enemyHeal, maxHealth: enemyMaxHealth)
+        let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+        let attackDouble = (1 - playerDefense) * Double(enemyAttackValue)
+        let attack = Int(attackDouble)
+        playerDefendedEnemyAttackHealthUpdate(attack: attack, originalAttack: enemyAttackValue)
     }
+    
     @IBAction func whenHealing(_ sender: Any) {
-        let doubleHealth = Double(playerHealth) * enemyHeal
+        let doubleHealth = Double(playerHealth) * playerHeal
         let totalHealed = playerMaxHealth - Int(doubleHealth)
         if Int(doubleHealth) > playerMaxHealth {
             playerHealth = playerMaxHealth
@@ -111,17 +119,29 @@ class ThirdViewController: UIViewController {
     
     
 
-    func enemyAttack(enemyAttackLow: Int, enemyAttackHigh: Int) {
+    func enemyAttack(enemyAttackLow: Int, enemyAttackHigh: Int) -> Int {
         var attack = Int.random(in: enemyAttackLow...enemyAttackHigh)
+        return attack
+    }
+    
+    func enemyAttackHealthUpdate(attack:Int) {
         playerHealth -= attack
         if playerHealth < 0 {
             playerHealth = 0
         }
         playerHealthLabel.text = "Health: \(playerHealth)"
         enemyAttackLog.text = "Enemy attacked for \(attack) damage!"
-        return
     }
     
+    func playerDefendedEnemyAttackHealthUpdate(attack: Int, originalAttack:Int) {
+        playerHealth -= attack
+        let defendedValue = originalAttack - attack
+        if playerHealth < 0 {
+            playerHealth = 0
+        }
+        playerHealthLabel.text = "Health: \(playerHealth)"
+        playerAttackLog.text = "You defended against \(defendedValue) damage!"
+    }
     func enemyHealing(enemyHeal: Double, maxHealth: Int) {
         let maxHealth = maxHealth
         let doubleHealth = Double(enemyHealth) * enemyHeal
