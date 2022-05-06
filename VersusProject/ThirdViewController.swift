@@ -25,6 +25,7 @@ class ThirdViewController: UIViewController {
     var enemyAttackHigh = 0
     
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
+    let enemyChoiceArracy = ["attack","defend","heal","attack"]
     
     let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 450, attackHigh: 550, heal: 1.35)
     let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, heal: 1.1)
@@ -72,30 +73,63 @@ class ThirdViewController: UIViewController {
     }
         @IBAction func whenAttacking(_ sender: Any) {
         let attack = Int.random(in: playerAttackLow...playerAttackHigh)
-//        enemyHealth -= attack
-//        if enemyHealth < 0 {
-//            enemyHealth = 0
-//        }
+
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         playerAttackLog.text = "You attacked for \(attack) damage!"
-
+            
+            let enemyChoice = enemyChoiceArracy.randomElement()
+            if enemyChoice == "attack" {
+                enemyHealth -= attack
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+                enemyAttackHealthUpdate(attack: enemyAttackValue)
+            } else if enemyChoice == "defend" {
+                enemyDefendedPlayerAttack(attack: attack)
+            } else if enemyChoice == "heal" {
+                enemyHealth -= attack
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                enemyHealing(enemyHeal: enemyHeal, maxHealth: enemyMaxHealth)
+            }
         
-        enemyDefendedPlayerAttack(attack: attack)
-//        let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
-//        enemyAttackHealthUpdate(attack: enemyAttackValue)
+
         
         gameResultDetector()
     }
     @IBAction func whenDefending(_ sender: Any) {
-        let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
-        let attackDouble = (1 - playerDefense) * Double(enemyAttackValue)
-        let attack = Int(attackDouble)
-        playerDefendedEnemyAttackHealthUpdate(attack: attack, originalAttack: enemyAttackValue)
+        let attack = 0
+        
+        let enemyChoice = enemyChoiceArracy.randomElement()
+        if enemyChoice == "attack" {
+            enemyHealth -= attack
+            if enemyHealth < 0 {
+                enemyHealth = 0
+            }
+            let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+            let enemyAttackDouble = (1 - playerDefense) * Double(enemyAttackValue)
+            let enemyAttack = Int(enemyAttackDouble)
+            playerDefendedEnemyAttackHealthUpdate(attack: enemyAttack, originalAttack: enemyAttackValue)
+            enemyAttackHealthUpdate(attack: enemyAttackValue)
+        } else if enemyChoice == "defend" {
+            enemyDefendedPlayerAttack(attack: attack)
+            playerAttackLog.text = "You defended against 0 damage!"
+        } else if enemyChoice == "heal" {
+            enemyHealing(enemyHeal: enemyHeal, maxHealth: enemyMaxHealth)
+            playerAttackLog.text = "You defended against 0 damage!"
+
+        }
+        
+        
         
         gameResultDetector()
     }
     
     @IBAction func whenHealing(_ sender: Any) {
+        let attack = 0
+        
         let doubleHealth = Double(playerHealth) * playerHeal
         let totalHealed = playerMaxHealth - Int(doubleHealth)
         if Int(doubleHealth) > playerMaxHealth {
@@ -108,6 +142,16 @@ class ThirdViewController: UIViewController {
             playerHealthLabel.text = "Health: \(playerHealth)"
             playerAttackLog.text = "You healed for \(totalHealed)!"
 
+        }
+        
+        let enemyChoice = enemyChoiceArracy.randomElement()
+        if enemyChoice == "attack" {
+            let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+            enemyAttackHealthUpdate(attack: enemyAttackValue)
+        } else if enemyChoice == "defend" {
+            enemyDefendedPlayerAttack(attack: attack)
+        } else if enemyChoice == "heal" {
+            enemyHealing(enemyHeal: enemyHeal, maxHealth: enemyMaxHealth)
         }
         
         gameResultDetector()
