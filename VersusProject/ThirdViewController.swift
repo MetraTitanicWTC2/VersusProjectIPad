@@ -77,9 +77,13 @@ class ThirdViewController: UIViewController {
             let playerLoseAlert = UIAlertController(title: "You Lose!", message: nil, preferredStyle: UIAlertController.Style.alert)
             let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
             let tryAgain = UIAlertAction(title: "Try again?", style: .default, handler: {action in
+                self.view.isHidden = false
+                self.playerHealth = self.playerMaxHealth
                 self.enemyHealth = self.enemyMaxHealth
                 self.playerAttackLog.text = ""
                 self.enemyAttackLog.text = ""
+                self.playerHealthLabel.text = "Health: \(self.playerHealth)"
+                self.enemyHealthLabel.text = "Health: \(self.enemyHealth)"
             })
             playerLoseAlert.addAction(menu)
             playerLoseAlert.addAction(tryAgain)
@@ -91,9 +95,14 @@ class ThirdViewController: UIViewController {
             let playerWinAlert = UIAlertController(title: "You Win!", message: nil, preferredStyle: UIAlertController.Style.alert)
             let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
             let tryAgain = UIAlertAction(title: "Try again?", style: .default, handler: {action in
+                self.view.isHidden = false
+                self.playerHealth = self.playerMaxHealth
                 self.enemyHealth = self.enemyMaxHealth
                 self.playerAttackLog.text = ""
                 self.enemyAttackLog.text = ""
+                self.playerHealthLabel.text = "Health: \(self.playerHealth)"
+                self.enemyHealthLabel.text = "Health: \(self.enemyHealth)"
+                
             })
             playerWinAlert.addAction(tryAgain)
             playerWinAlert.addAction(menu)
