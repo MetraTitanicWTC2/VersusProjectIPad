@@ -17,6 +17,7 @@ class ThirdViewController: UIViewController {
     var playerAttackLow = 0
     var playerAttackHigh = 0
     
+    var enemyDefense = 0.0
     var enemyMaxHealth = 0
     var enemyHeal = 0.0
     var enemyHealth = 0
@@ -55,6 +56,8 @@ class ThirdViewController: UIViewController {
         playerMaxHealth = playerSelection.health
         playerHeal = playerSelection.heal
         playerHealthLabel.text = "Health: \(playerHealth)"
+        
+        enemyDefense = enemySelection!.defense
         enemyHeal = enemySelection!.heal
         enemyHealth = enemySelection!.health
         enemyMaxHealth = enemySelection!.health
@@ -69,16 +72,17 @@ class ThirdViewController: UIViewController {
     }
         @IBAction func whenAttacking(_ sender: Any) {
         let attack = Int.random(in: playerAttackLow...playerAttackHigh)
-        enemyHealth -= attack
-        if enemyHealth < 0 {
-            enemyHealth = 0
-        }
+//        enemyHealth -= attack
+//        if enemyHealth < 0 {
+//            enemyHealth = 0
+//        }
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         playerAttackLog.text = "You attacked for \(attack) damage!"
 
         
-        let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
-        enemyAttackHealthUpdate(attack: enemyAttackValue)
+        enemyDefendedPlayerAttack(attack: attack)
+//        let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+//        enemyAttackHealthUpdate(attack: enemyAttackValue)
         
         gameResultDetector()
     }
@@ -134,6 +138,21 @@ class ThirdViewController: UIViewController {
         playerHealthLabel.text = "Health: \(playerHealth)"
         playerAttackLog.text = "You defended against \(defendedValue) damage!"
     }
+    
+    func enemyDefendedPlayerAttack(attack:Int) {
+        var playerAttack = attack
+        let defendedAttack = Double(attack) * (1 - enemyDefense)
+        enemyHealth -= Int(defendedAttack)
+        playerAttack -= Int(defendedAttack)
+        
+        if enemyHealth < 0 {
+            enemyHealth = 0
+        }
+        
+        enemyHealthLabel.text = "Health: \(enemyHealth)"
+        enemyAttackLog.text = "Enemy defended against \(playerAttack) damage!"
+    }
+    
     func enemyHealing(enemyHeal: Double, maxHealth: Int) {
         let maxHealth = maxHealth
         let doubleHealth = Double(enemyHealth) * enemyHeal
