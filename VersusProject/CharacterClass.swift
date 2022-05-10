@@ -15,9 +15,9 @@ class character {
     var attackHigh: Int
     var healLow: Int
     var healHigh: Int
+    var healingPower: Int
     
-    
-    init(name: String, health: Int, defense: Double, attackLow: Int, attackHigh: Int, healLow: Int, healHigh: Int) {
+    init(name: String, health: Int, defense: Double, attackLow: Int, attackHigh: Int, healLow: Int, healHigh: Int, healingPower: Int) {
         self.name = name
         self.health = health
         self.attackLow = attackLow
@@ -25,5 +25,6 @@ class character {
         self.defense = defense
         self.healLow = healLow
         self.healHigh = healHigh
+        self.healingPower = healingPower
     }
 }

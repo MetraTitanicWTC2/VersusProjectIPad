@@ -30,10 +30,10 @@ class ThirdViewController: UIViewController {
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     let enemyChoiceArracy = ["attack","defend","heal","attack"]
     
-    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 450, attackHigh: 550, healLow: 600, healHigh: 700)
-    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, healLow: 300, healHigh: 400)
-    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, healLow: 400, healHigh: 700)
-    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, healLow: 500, healHigh: 600)
+    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 450, attackHigh: 550, healLow: 600, healHigh: 700, healingPower: 500)
+    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, healLow: 300, healHigh: 400, healingPower: 300)
+    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, healLow: 400, healHigh: 700, healingPower: 400)
+    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, healLow: 500, healHigh: 600, healingPower: 440)
    var turnCount = 1
     
     @IBOutlet weak var turnCounterLabel: UILabel!
