@@ -8,7 +8,7 @@
 import UIKit
 
 class ThirdViewController: UIViewController {
-
+    var intHeal = 0
     var playerDefense = 0.0
     var playerMaxHealth = 0
     var playerHeal = 0.0
@@ -16,6 +16,7 @@ class ThirdViewController: UIViewController {
     var playerHealth = 0
     var playerAttackLow = 0
     var playerAttackHigh = 0
+    var healingSpell = 0
     
     var enemyDefense = 0.0
     var enemyMaxHealth = 0
@@ -27,10 +28,10 @@ class ThirdViewController: UIViewController {
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     let enemyChoiceArracy = ["attack","defend","heal","attack"]
     
-    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 450, attackHigh: 550, heal: 1.35)
-    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, heal: 1.1)
-    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, heal: 1.25)
-    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, heal: 1.2)
+    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 450, attackHigh: 550, heal: 1.35, healingPower: 560)
+    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, heal: 1.1, healingPower: 300)
+    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, heal: 1.25, healingPower: 400)
+    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, heal: 1.2, healingPower: 440)
    var turnCount = 1
     
     @IBOutlet weak var turnCounterLabel: UILabel!
@@ -39,6 +40,7 @@ class ThirdViewController: UIViewController {
     @IBOutlet weak var playerHealthLabel: UILabel!
     @IBOutlet weak var enemyHealthLabel: UILabel!
     @IBOutlet weak var enemyImageView: UIImageView!
+    @IBOutlet weak var special: UILabel!
     @IBOutlet weak var playerImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +59,7 @@ class ThirdViewController: UIViewController {
         playerMaxHealth = playerSelection.health
         playerHeal = playerSelection.heal
         playerHealthLabel.text = "Health: \(playerHealth)"
+        healingSpell = playerSelection.healingPower
         
         enemyDefense = enemySelection!.defense
         enemyHeal = enemySelection!.heal
@@ -68,6 +71,8 @@ class ThirdViewController: UIViewController {
         playerAttackHigh = playerSelection.attackHigh
         enemyAttackLow = enemySelection!.attackLow
         enemyAttackHigh = enemySelection!.attackHigh
+        
+        intHeal = Int(healingSpell)
         // Do any additional setup after loading the view.
         
     }
@@ -144,6 +149,8 @@ class ThirdViewController: UIViewController {
             playerHealth = playerMaxHealth
             playerHealthLabel.text = "Health: \(playerHealth)"
             playerAttackLog.text = "You healed to full health!"
+            intHeal -= 20
+            special.text = "SP: \(intHeal)"
 
         } else if Int(doubleHealth) < playerMaxHealth {
             playerHealth = Int(doubleHealth)

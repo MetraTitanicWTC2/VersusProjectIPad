@@ -307,6 +307,13 @@ Attack: 1500
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SP: ???" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJ3-fy-6se">
+                                <rect key="frame" x="273" y="617" width="213" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QKG-it-ap4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -319,6 +326,7 @@ Attack: 1500
                         <outlet property="playerAttackLog" destination="7R4-cq-9o6" id="OEb-K8-koa"/>
                         <outlet property="playerHealthLabel" destination="YXU-Fl-UjJ" id="Dmo-V5-WIe"/>
                         <outlet property="playerImageView" destination="iSc-sA-0ww" id="exY-R1-Soz"/>
+                        <outlet property="special" destination="AJ3-fy-6se" id="RAA-Lr-d5m"/>
                         <outlet property="turnCounterLabel" destination="Pv0-qx-cQe" id="Sz7-bB-W1d"/>
                         <segue destination="tg6-5n-YVc" kind="unwind" identifier="Menu" unwindAction="unwindToMenuWithSegue:" id="soh-kf-Hb2"/>
                     </connections>

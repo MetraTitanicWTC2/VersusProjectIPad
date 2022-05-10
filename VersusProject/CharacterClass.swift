@@ -14,15 +14,16 @@ class character {
     var attackLow: Int
     var attackHigh: Int
     var heal: Double
+    var healingPower: Int
     
-    
-    init(name: String, health: Int, defense: Double, attackLow: Int, attackHigh: Int, heal: Double) {
+    init(name: String, health: Int, defense: Double, attackLow: Int, attackHigh: Int, heal: Double, healingPower: Int) {
         self.name = name
         self.health = health
         self.attackLow = attackLow
         self.attackHigh = attackHigh
         self.defense = defense
         self.heal = heal
+        self.healingPower = healingPower
         
     }
 }
