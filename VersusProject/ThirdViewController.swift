@@ -31,7 +31,7 @@ class ThirdViewController: UIViewController {
     let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, heal: 1.1)
     let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, heal: 1.25)
     let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, heal: 1.2)
-   
+   var turnCount = 1
     
     @IBOutlet weak var turnCounterLabel: UILabel!
     @IBOutlet weak var enemyAttackLog: UILabel!
@@ -43,7 +43,7 @@ class ThirdViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        turnCounterLabel.text = "\(turnCount)"
          let characterArray:Array<character> = [rexa, arcturus, deimos, fermi]
          let playerSelection = characterArray[playerChoice]
          let enemySelection = characterArray.randomElement()
@@ -97,6 +97,11 @@ class ThirdViewController: UIViewController {
         
 
         
+        enemyDefendedPlayerAttack(attack: attack)
+//        let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+//        enemyAttackHealthUpdate(attack: enemyAttackValue)
+            turnCount += 1
+            turnCounterLabel.text = "\(turnCount)"
         gameResultDetector()
     }
     @IBAction func whenDefending(_ sender: Any) {
@@ -125,6 +130,8 @@ class ThirdViewController: UIViewController {
         
         
         gameResultDetector()
+        turnCount += 1
+        turnCounterLabel.text = "\(turnCount)"
     }
     
     @IBAction func whenHealing(_ sender: Any) {
@@ -160,6 +167,8 @@ class ThirdViewController: UIViewController {
             enemyHealing(enemyHeal: enemyHeal, maxHealth: enemyMaxHealth)
         }
         
+        turnCount += 1
+        turnCounterLabel.text = "\(turnCount)"
         gameResultDetector()
     }
     
@@ -228,7 +237,7 @@ class ThirdViewController: UIViewController {
             view.isHidden = true
             let playerLoseAlert = UIAlertController(title: "You Lose!", message: nil, preferredStyle: UIAlertController.Style.alert)
             let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
-            let tryAgain = UIAlertAction(title: "Try again?", style: .default, handler: {action in
+            let tryAgain = UIAlertAction(title: "Try again?", style: .cancel, handler: {action in
                 self.view.isHidden = false
                 self.playerHealth = self.playerMaxHealth
                 self.enemyHealth = self.enemyMaxHealth
@@ -236,16 +245,17 @@ class ThirdViewController: UIViewController {
                 self.enemyAttackLog.text = ""
                 self.playerHealthLabel.text = "Health: \(self.playerHealth)"
                 self.enemyHealthLabel.text = "Health: \(self.enemyHealth)"
+                self.turnCount = 1
             })
-            playerLoseAlert.addAction(menu)
             playerLoseAlert.addAction(tryAgain)
+            playerLoseAlert.addAction(menu)
             present(playerLoseAlert, animated: true)
         }
     
         if enemyHealth <= 0 {
             view.isHidden = true
             let playerWinAlert = UIAlertController(title: "You Win!", message: nil, preferredStyle: UIAlertController.Style.alert)
-            let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
+            let menu = UIAlertAction(title: "Main Menu", style: .cancel, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
             let tryAgain = UIAlertAction(title: "Try again?", style: .default, handler: {action in
                 self.view.isHidden = false
                 self.playerHealth = self.playerMaxHealth
@@ -254,10 +264,10 @@ class ThirdViewController: UIViewController {
                 self.enemyAttackLog.text = ""
                 self.playerHealthLabel.text = "Health: \(self.playerHealth)"
                 self.enemyHealthLabel.text = "Health: \(self.enemyHealth)"
-                
+                self.turnCount = 1
             })
-            playerWinAlert.addAction(tryAgain)
             playerWinAlert.addAction(menu)
+            playerWinAlert.addAction(tryAgain)
             present(playerWinAlert, animated: true)
             
         }
