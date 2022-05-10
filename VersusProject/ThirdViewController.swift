@@ -227,8 +227,8 @@ class ThirdViewController: UIViewController {
         if playerHealth <= 0 {
             view.isHidden = true
             let playerLoseAlert = UIAlertController(title: "You Lose!", message: nil, preferredStyle: UIAlertController.Style.alert)
-            let menu = UIAlertAction(title: "Main Menu", style: .cancel, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
-            let tryAgain = UIAlertAction(title: "Try again?", style: .default, handler: {action in
+            let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
+            let tryAgain = UIAlertAction(title: "Try again?", style: .cancel, handler: {action in
                 self.view.isHidden = false
                 self.playerHealth = self.playerMaxHealth
                 self.enemyHealth = self.enemyMaxHealth
@@ -236,6 +236,7 @@ class ThirdViewController: UIViewController {
                 self.enemyAttackLog.text = ""
                 self.playerHealthLabel.text = "Health: \(self.playerHealth)"
                 self.enemyHealthLabel.text = "Health: \(self.enemyHealth)"
+                self.turnCount = 1
             })
             playerLoseAlert.addAction(tryAgain)
             playerLoseAlert.addAction(menu)
@@ -245,7 +246,7 @@ class ThirdViewController: UIViewController {
         if enemyHealth <= 0 {
             view.isHidden = true
             let playerWinAlert = UIAlertController(title: "You Win!", message: nil, preferredStyle: UIAlertController.Style.alert)
-            let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
+            let menu = UIAlertAction(title: "Main Menu", style: .cancel, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
             let tryAgain = UIAlertAction(title: "Try again?", style: .default, handler: {action in
                 self.view.isHidden = false
                 self.playerHealth = self.playerMaxHealth
@@ -254,7 +255,7 @@ class ThirdViewController: UIViewController {
                 self.enemyAttackLog.text = ""
                 self.playerHealthLabel.text = "Health: \(self.playerHealth)"
                 self.enemyHealthLabel.text = "Health: \(self.enemyHealth)"
-                
+                self.turnCount = 1
             })
             playerWinAlert.addAction(menu)
             playerWinAlert.addAction(tryAgain)
