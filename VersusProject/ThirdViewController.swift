@@ -43,7 +43,7 @@ class ThirdViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        turnCounterLabel.text = "\(turnCount)"
+        turnCounterLabel.text = "Turn \(turnCount)"
          let characterArray:Array<character> = [rexa, arcturus, deimos, fermi]
          let playerSelection = characterArray[playerChoice]
          let enemySelection = characterArray.randomElement()
@@ -101,7 +101,7 @@ class ThirdViewController: UIViewController {
 //        let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
 //        enemyAttackHealthUpdate(attack: enemyAttackValue)
             turnCount += 1
-            turnCounterLabel.text = "\(turnCount)"
+            turnCounterLabel.text = "Turn \(turnCount)"
         gameResultDetector()
     }
     @IBAction func whenDefending(_ sender: Any) {
@@ -131,7 +131,7 @@ class ThirdViewController: UIViewController {
         
         gameResultDetector()
         turnCount += 1
-        turnCounterLabel.text = "\(turnCount)"
+        turnCounterLabel.text = "Turn \(turnCount)"
     }
     
     @IBAction func whenHealing(_ sender: Any) {
@@ -168,7 +168,7 @@ class ThirdViewController: UIViewController {
         }
         
         turnCount += 1
-        turnCounterLabel.text = "\(turnCount)"
+        turnCounterLabel.text = "Turn \(turnCount)"
         gameResultDetector()
     }
     
