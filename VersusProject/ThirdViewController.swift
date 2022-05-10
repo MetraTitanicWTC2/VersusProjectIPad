@@ -11,7 +11,8 @@ class ThirdViewController: UIViewController {
     var intHeal = 0
     var playerDefense = 0.0
     var playerMaxHealth = 0
-    var playerHeal = 0.0
+    var playerHealLow = 0
+    var playerHealHigh = 0
     var playerChoice = 0
     var playerHealth = 0
     var playerAttackLow = 0
@@ -20,7 +21,8 @@ class ThirdViewController: UIViewController {
     
     var enemyDefense = 0.0
     var enemyMaxHealth = 0
-    var enemyHeal = 0.0
+    var enemyHealLow = 0
+    var enemyHealHigh = 0
     var enemyHealth = 0
     var enemyAttackLow = 0
     var enemyAttackHigh = 0
@@ -28,10 +30,10 @@ class ThirdViewController: UIViewController {
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     let enemyChoiceArracy = ["attack","defend","heal","attack"]
     
-    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 450, attackHigh: 550, heal: 1.35, healingPower: 560)
-    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, heal: 1.1, healingPower: 300)
-    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, heal: 1.25, healingPower: 400)
-    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, heal: 1.2, healingPower: 440)
+    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 450, attackHigh: 550, healLow: 600, healHigh: 700)
+    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, healLow: 300, healHigh: 400)
+    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, healLow: 400, healHigh: 700)
+    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, healLow: 500, healHigh: 600)
    var turnCount = 1
     
     @IBOutlet weak var turnCounterLabel: UILabel!
@@ -57,12 +59,14 @@ class ThirdViewController: UIViewController {
         playerDefense = playerSelection.defense
         playerHealth = playerSelection.health
         playerMaxHealth = playerSelection.health
-        playerHeal = playerSelection.heal
+        playerHealLow = playerSelection.healLow
+        playerHealHigh = playerSelection.healHigh
         playerHealthLabel.text = "Health: \(playerHealth)"
         healingSpell = playerSelection.healingPower
         
         enemyDefense = enemySelection!.defense
-        enemyHeal = enemySelection!.heal
+        enemyHealLow = enemySelection!.healLow
+        enemyHealHigh = enemySelection!.healHigh
         enemyHealth = enemySelection!.health
         enemyMaxHealth = enemySelection!.health
         enemyHealthLabel.text = "Health: \(enemyHealth)"
@@ -97,7 +101,7 @@ class ThirdViewController: UIViewController {
                 if enemyHealth < 0 {
                     enemyHealth = 0
                 }
-                enemyHealing(enemyHeal: enemyHeal, maxHealth: enemyMaxHealth)
+                enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
             }
         
 
@@ -127,7 +131,7 @@ class ThirdViewController: UIViewController {
             enemyDefendedPlayerAttack(attack: attack)
             playerAttackLog.text = "You defended against 0 damage!"
         } else if enemyChoice == "heal" {
-            enemyHealing(enemyHeal: enemyHeal, maxHealth: enemyMaxHealth)
+            enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
             playerAttackLog.text = "You defended against 0 damage!"
 
         }
@@ -141,25 +145,21 @@ class ThirdViewController: UIViewController {
     
     @IBAction func whenHealing(_ sender: Any) {
         let attack = 0
-        
+        let playerHeal = Int.random(in: playerHealLow...playerHealHigh)
         let currentHealth = playerHealth
-        let doubleHealth = Double(playerHealth) * playerHeal
-        let totalHealed = Int(doubleHealth) - currentHealth
-        if Int(doubleHealth) > playerMaxHealth {
+        let healedHealth = playerHealth + playerHeal
+        let totalHealed = healedHealth - currentHealth
+        if healedHealth > playerMaxHealth {
             playerHealth = playerMaxHealth
             playerHealthLabel.text = "Health: \(playerHealth)"
             playerAttackLog.text = "You healed to full health!"
             intHeal -= 20
             special.text = "SP: \(intHeal)"
 
-        } else if Int(doubleHealth) < playerMaxHealth {
-            playerHealth = Int(doubleHealth)
+        } else if healedHealth < playerMaxHealth {
+            playerHealth = healedHealth
             playerHealthLabel.text = "Health: \(playerHealth)"
             playerAttackLog.text = "You healed for \(totalHealed)!"
-
-        } else if playerHealth == playerMaxHealth {
-            playerHealthLabel.text = "Health: \(playerHealth)"
-            playerAttackLog.text = "You can't heal past your max health."
 
         }
         
@@ -167,11 +167,11 @@ class ThirdViewController: UIViewController {
         if enemyChoice == "attack" {
             let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
             enemyAttackHealthUpdate(attack: enemyAttackValue)
-            playerAttackLog.text = "You can't heal past your max health."
+//            playerAttackLog.text = "Enemy attacked after you healed for \(totalHealed)!"
         } else if enemyChoice == "defend" {
             enemyDefendedPlayerAttack(attack: attack)
         } else if enemyChoice == "heal" {
-            enemyHealing(enemyHeal: enemyHeal, maxHealth: enemyMaxHealth)
+            enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
         }
         
         turnCount += 1
@@ -221,18 +221,19 @@ class ThirdViewController: UIViewController {
         enemyAttackLog.text = "Enemy defended against \(playerAttack) damage!"
     }
     
-    func enemyHealing(enemyHeal: Double, maxHealth: Int) {
+    func enemyHealing(enemyHealLow: Int, enemyHealHigh: Int, maxHealth: Int) {
+        let enemyHeal = Int.random(in: enemyHealLow...enemyHealHigh)
         let currentHealth = enemyHealth
         let maxHealth = maxHealth
-        let doubleHealth = Double(enemyHealth) * enemyHeal
-        let totalHealed = Int(doubleHealth) - currentHealth
-        if Int(doubleHealth) > maxHealth {
+        let healedHealth = enemyHealth + enemyHeal
+        let totalHealed = healedHealth - currentHealth
+        if healedHealth > maxHealth {
             enemyHealth = maxHealth
             enemyHealthLabel.text = "Health: \(enemyHealth)"
             enemyAttackLog.text = "Enemy healed to full health!"
 
         } else {
-            enemyHealth = Int(doubleHealth)
+            enemyHealth = healedHealth
             enemyHealthLabel.text = "Health: \(enemyHealth)"
             enemyAttackLog.text = "Enemy healed for \(totalHealed)!"
 
