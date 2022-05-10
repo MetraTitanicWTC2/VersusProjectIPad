@@ -130,17 +130,22 @@ class ThirdViewController: UIViewController {
     @IBAction func whenHealing(_ sender: Any) {
         let attack = 0
         
+        let currentHealth = playerHealth
         let doubleHealth = Double(playerHealth) * playerHeal
-        let totalHealed = playerMaxHealth - Int(doubleHealth)
+        let totalHealed = Int(doubleHealth) - currentHealth
         if Int(doubleHealth) > playerMaxHealth {
             playerHealth = playerMaxHealth
             playerHealthLabel.text = "Health: \(playerHealth)"
             playerAttackLog.text = "You healed to full health!"
 
-        } else {
+        } else if Int(doubleHealth) < playerMaxHealth {
             playerHealth = Int(doubleHealth)
             playerHealthLabel.text = "Health: \(playerHealth)"
             playerAttackLog.text = "You healed for \(totalHealed)!"
+
+        } else if playerHealth == playerMaxHealth {
+            playerHealthLabel.text = "Health: \(playerHealth)"
+            playerAttackLog.text = "You can't heal past your max health."
 
         }
         
@@ -148,6 +153,7 @@ class ThirdViewController: UIViewController {
         if enemyChoice == "attack" {
             let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
             enemyAttackHealthUpdate(attack: enemyAttackValue)
+            playerAttackLog.text = "You can't heal past your max health."
         } else if enemyChoice == "defend" {
             enemyDefendedPlayerAttack(attack: attack)
         } else if enemyChoice == "heal" {
@@ -157,10 +163,12 @@ class ThirdViewController: UIViewController {
         gameResultDetector()
     }
     
-    
+    //---------------------
+    //------functions------
+    //---------------------
 
     func enemyAttack(enemyAttackLow: Int, enemyAttackHigh: Int) -> Int {
-        var attack = Int.random(in: enemyAttackLow...enemyAttackHigh)
+        let attack = Int.random(in: enemyAttackLow...enemyAttackHigh)
         return attack
     }
     
@@ -198,9 +206,10 @@ class ThirdViewController: UIViewController {
     }
     
     func enemyHealing(enemyHeal: Double, maxHealth: Int) {
+        let currentHealth = enemyHealth
         let maxHealth = maxHealth
         let doubleHealth = Double(enemyHealth) * enemyHeal
-        let totalHealed = maxHealth - Int(doubleHealth)
+        let totalHealed = Int(doubleHealth) - currentHealth
         if Int(doubleHealth) > maxHealth {
             enemyHealth = maxHealth
             enemyHealthLabel.text = "Health: \(enemyHealth)"
