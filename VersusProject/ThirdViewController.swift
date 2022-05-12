@@ -39,6 +39,7 @@ class ThirdViewController: UIViewController {
     @IBOutlet weak var turnCounterLabel: UILabel!
     @IBOutlet weak var enemyAttackLog: UILabel!
     @IBOutlet weak var playerAttackLog: UILabel!
+    @IBOutlet weak var healButton: UIButton!
     @IBOutlet weak var playerHealthLabel: UILabel!
     @IBOutlet weak var enemyHealthLabel: UILabel!
     @IBOutlet weak var enemyImageView: UIImageView!
@@ -168,6 +169,7 @@ class ThirdViewController: UIViewController {
             let healAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             healerAlert.addAction(healAlert)
             present(healerAlert, animated: true)
+            healButton.isEnabled = false
             
         }
             

@@ -323,6 +323,7 @@ Attack: 1500
                         <outlet property="enemyAttackLog" destination="mmv-Hr-aWA" id="nMQ-Qq-BiL"/>
                         <outlet property="enemyHealthLabel" destination="pmr-BX-BDz" id="MOM-k2-zjf"/>
                         <outlet property="enemyImageView" destination="ahw-hG-97b" id="gCg-1T-hx1"/>
+                        <outlet property="healButton" destination="oFX-f2-ZtU" id="V9Y-ov-HRs"/>
                         <outlet property="playerAttackLog" destination="7R4-cq-9o6" id="OEb-K8-koa"/>
                         <outlet property="playerHealthLabel" destination="YXU-Fl-UjJ" id="Dmo-V5-WIe"/>
                         <outlet property="playerImageView" destination="iSc-sA-0ww" id="exY-R1-Soz"/>
