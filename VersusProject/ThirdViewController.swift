@@ -190,9 +190,9 @@ class ThirdViewController: UIViewController {
         gameResultDetector()
     }
     
-    //---------------------
-    //------functions------
-    //---------------------
+    //------------------------------------------------------------------------------------------------------
+    //------functions---------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------
 
     func enemyAttack(enemyAttackLow: Int, enemyAttackHigh: Int) -> Int {
         let attack = Int.random(in: enemyAttackLow...enemyAttackHigh)
@@ -220,6 +220,7 @@ class ThirdViewController: UIViewController {
     
     func enemyDefendedPlayerAttack(attack:Int) {
         var playerAttack = attack
+        enemyHealth += attack
         let defendedAttack = Double(attack) * (1 - enemyDefense)
         enemyHealth -= Int(defendedAttack)
         playerAttack -= Int(defendedAttack)
