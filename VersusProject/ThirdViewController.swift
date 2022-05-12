@@ -149,6 +149,7 @@ class ThirdViewController: UIViewController {
         let currentHealth = playerHealth
         let healedHealth = playerHealth + playerHeal
         let totalHealed = healedHealth - currentHealth
+        let specialSpell = 0
         if healedHealth > playerMaxHealth {
             playerHealth = playerMaxHealth
             playerHealthLabel.text = "Health: \(playerHealth)"
@@ -160,8 +161,18 @@ class ThirdViewController: UIViewController {
             playerHealth = healedHealth
             playerHealthLabel.text = "Health: \(playerHealth)"
             playerAttackLog.text = "You healed for \(totalHealed)!"
-
         }
+        if special.text! <= "SP: 0" {
+            let healerAlert = UIAlertController(title: "You can no longer heal", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let healAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            healerAlert.addAction(healAlert)
+            present(healerAlert, animated: true)
+            
+        }
+            
+            
+        
         
         let enemyChoice = enemyChoiceArracy.randomElement()
         if enemyChoice == "attack" {
