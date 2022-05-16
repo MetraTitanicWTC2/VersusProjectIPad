@@ -37,7 +37,10 @@ class ThirdViewController: UIViewController {
     let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, healLow: 500, healHigh: 600, healingPower: 440)
    var turnCount = 1
     
-    @IBOutlet var magicButton: UIView!
+    @IBOutlet weak var magicChoice3: UIButton!
+    @IBOutlet weak var magicChoice2: UIButton!
+    @IBOutlet weak var magicChoice1: UIButton!
+    @IBOutlet weak var magicButton: UIButton!
     @IBOutlet weak var magic: UILabel!
     @IBOutlet weak var turnCounterLabel: UILabel!
     @IBOutlet weak var enemyAttackLog: UILabel!
