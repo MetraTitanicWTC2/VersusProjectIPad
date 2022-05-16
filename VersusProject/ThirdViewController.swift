@@ -19,7 +19,9 @@ class ThirdViewController: UIViewController {
     var playerAttackLow = 0
     var playerAttackHigh = 0
     var healingSpell = 0
-    
+    var magicSpell1 = ""
+    var magicSpell2 = ""
+    var magicSpell3 = ""
     var enemyDefense = 0.0
     var enemyMaxHealth = 0
     var enemyHealLow = 0
@@ -70,6 +72,9 @@ class ThirdViewController: UIViewController {
         playerHealHigh = playerSelection.healHigh
         playerHealthLabel.text = "Health: \(playerHealth)"
         healingSpell = playerSelection.healingPower
+        magicSpell1 = playerSelection.magicAttack1
+        magicSpell2 = playerSelection.magicAttack2
+        magicSpell3 = playerSelection.magicAttack3
         
         enemyDefense = enemySelection!.defense
         enemyHealLow = enemySelection!.healLow
