@@ -92,6 +92,7 @@ class ThirdViewController: UIViewController {
             
             let enemyChoice = enemyChoiceArracy.randomElement()
             if enemyChoice == "attack" {
+                
                 enemyHealth -= attack
                 if enemyHealth < 0 {
                     enemyHealth = 0
@@ -100,6 +101,7 @@ class ThirdViewController: UIViewController {
                 enemyAttackHealthUpdate(attack: enemyAttackValue)
             } else if enemyChoice == "defend" {
                 enemyDefendedPlayerAttack(attack: attack)
+               
             } else if enemyChoice == "heal" {
                 enemyHealth -= attack
                 if enemyHealth < 0 {
@@ -110,9 +112,7 @@ class ThirdViewController: UIViewController {
         
 
         
-        enemyDefendedPlayerAttack(attack: attack)
-//        let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
-//        enemyAttackHealthUpdate(attack: enemyAttackValue)
+
             turnCount += 1
             turnCounterLabel.text = "Turn \(turnCount)"
         gameResultDetector()
@@ -237,6 +237,8 @@ class ThirdViewController: UIViewController {
         
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         enemyAttackLog.text = "Enemy defended against \(playerAttack) damage!"
+        
+       
     }
     
     func enemyHealing(enemyHealLow: Int, enemyHealHigh: Int, maxHealth: Int) {
