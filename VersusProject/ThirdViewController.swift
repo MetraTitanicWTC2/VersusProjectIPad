@@ -6,8 +6,12 @@
 //
 
 import UIKit
+let userDefaults = UserDefaults.standard
 
 class ThirdViewController: UIViewController {
+    var wins = 0
+    var losses = 0
+    
     var intHeal = 0
     
     var playerDefense = 0.0
@@ -282,6 +286,8 @@ class ThirdViewController: UIViewController {
             playerLoseAlert.addAction(tryAgain)
             playerLoseAlert.addAction(menu)
             present(playerLoseAlert, animated: true)
+            losses += 1
+            userDefaults.set(losses, forKey: "losses")
         }
     
         if enemyHealth <= 0 {
@@ -301,7 +307,8 @@ class ThirdViewController: UIViewController {
             playerWinAlert.addAction(menu)
             playerWinAlert.addAction(tryAgain)
             present(playerWinAlert, animated: true)
-            
+            wins += 1
+            userDefaults.set(wins, forKey: "wins")
         }
     }
     
