@@ -53,7 +53,7 @@ class ThirdViewController: UIViewController {
          let characterArray:Array<character> = [rexa, arcturus, deimos, fermi]
          let playerSelection = characterArray[playerChoice]
          let enemySelection = characterArray.randomElement()
-        special.text = "SP: \(healingSpell)"
+        special.text = "SP: \(playerSelection.healingPower)"
         
         playerImageView.image = UIImage(named: nameArracy[playerChoice])
         enemyImageView.image = UIImage(named: enemySelection!.name)
