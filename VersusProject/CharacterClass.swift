@@ -16,8 +16,11 @@ class character {
     var healLow: Int
     var healHigh: Int
     var healingPower: Int
-    
-    init(name: String, health: Int, defense: Double, attackLow: Int, attackHigh: Int, healLow: Int, healHigh: Int, healingPower: Int) {
+    var magicAttack1: String
+    var magicAttack2: String
+    var magicAttack3: String
+    var magicPower: Int
+    init(name: String, health: Int, defense: Double, attackLow: Int, attackHigh: Int, healLow: Int, healHigh: Int, healingPower: Int, magicAttack1: String, magicAttack2: String, magicAttack3: String, magicPower: Int) {
         self.name = name
         self.health = health
         self.attackLow = attackLow
@@ -26,5 +29,9 @@ class character {
         self.healLow = healLow
         self.healHigh = healHigh
         self.healingPower = healingPower
+        self.magicAttack1 = magicAttack1
+        self.magicAttack2 = magicAttack2
+        self.magicAttack3 = magicAttack3
+        self.magicPower = magicPower
     }
 }
