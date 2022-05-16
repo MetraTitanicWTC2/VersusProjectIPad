@@ -29,14 +29,15 @@ class ThirdViewController: UIViewController {
     var enemyHealth = 0
     var enemyAttackLow = 0
     var enemyAttackHigh = 0
+    var magicInt = 0
     
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     let enemyChoiceArracy = ["attack","defend","heal","attack"]
     
-    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 450, attackHigh: 550, healLow: 600, healHigh: 700, healingPower: 500, magicAttack1: "Toxic Needle Fall", magicAttack2: "Focused Noxious Impact", magicAttack3: "Secret Poison Ambush" )
-    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, healLow: 300, healHigh: 400, healingPower: 300, magicAttack1: "Savage Magma Cut", magicAttack2: "Reckless Bubble Drain", magicAttack3: "Angel's Dragon Slaying Aura")
-    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, healLow: 400, healHigh: 700, healingPower: 400, magicAttack1: "Earth Blast", magicAttack2: "Emerald Thorn Surge", magicAttack3: "Grand Chaos Hit")
-    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, healLow: 500, healHigh: 600, healingPower: 440, magicAttack1: "White Lotus Binding", magicAttack2: "Secret Frost Technique", magicAttack3: "Glacier Spider Hypnotizing Blade")
+    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 450, attackHigh: 550, healLow: 600, healHigh: 700, healingPower: 500, magicAttack1: "Toxic Needle Fall", magicAttack2: "Focused Noxious Impact", magicAttack3: "Secret Poison Ambush", magicPower: 450 )
+    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, healLow: 300, healHigh: 400, healingPower: 300, magicAttack1: "Savage Magma Cut", magicAttack2: "Reckless Bubble Drain", magicAttack3: "Angel's Dragon Slaying Aura", magicPower: 300)
+    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, healLow: 400, healHigh: 700, healingPower: 400, magicAttack1: "Earth Blast", magicAttack2: "Emerald Thorn Surge", magicAttack3: "Grand Chaos Hit", magicPower: 350)
+    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, healLow: 500, healHigh: 600, healingPower: 440, magicAttack1: "White Lotus Binding", magicAttack2: "Secret Frost Technique", magicAttack3: "Glacier Spider Hypnotizing Blade", magicPower: 275)
    var turnCount = 1
     
     @IBOutlet weak var magicChoice3: UIButton!
@@ -61,6 +62,8 @@ class ThirdViewController: UIViewController {
          let playerSelection = characterArray[playerChoice]
          let enemySelection = characterArray.randomElement()
         special.text = "SP: \(playerSelection.healingPower)"
+        magic.text = "MP: \(playerSelection.magicPower)"
+
         
         playerImageView.image = UIImage(named: nameArracy[playerChoice])
         enemyImageView.image = UIImage(named: enemySelection!.name)
@@ -75,6 +78,7 @@ class ThirdViewController: UIViewController {
         magicSpell1 = playerSelection.magicAttack1
         magicSpell2 = playerSelection.magicAttack2
         magicSpell3 = playerSelection.magicAttack3
+        magicInt = playerSelection.magicPower
         
         enemyDefense = enemySelection!.defense
         enemyHealLow = enemySelection!.healLow
@@ -309,4 +313,9 @@ class ThirdViewController: UIViewController {
         }
     }
     
+    @IBAction func whenMagicButtonTapped(_ sender: Any) {
+        magicChoice1.setTitle("\(magicSpell1)", for: UIControl.State.normal)
+        magicChoice2.setTitle("\(magicSpell2)", for: UIControl.State.normal)
+        magicChoice3.setTitle("\(magicSpell3)", for: UIControl.State.normal)
+    }
 }

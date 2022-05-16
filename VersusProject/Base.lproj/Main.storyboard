@@ -322,12 +322,15 @@ Attack: 1500
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoL-FM-Qvm">
-                                <rect key="frame" x="100" y="1077" width="132" height="63"/>
+                                <rect key="frame" x="100" y="1077" width="132" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Magic">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="41"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="whenMagicButtonTapped:" destination="Q4H-eP-Sim" eventType="touchUpInside" id="lI9-7I-jB5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OH4-hp-tHJ">
                                 <rect key="frame" x="295" y="1023" width="24" height="14"/>
