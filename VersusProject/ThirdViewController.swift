@@ -9,6 +9,7 @@ import UIKit
 
 class ThirdViewController: UIViewController {
     var intHeal = 0
+    
     var playerDefense = 0.0
     var playerMaxHealth = 0
     var playerHealLow = 0
@@ -52,7 +53,7 @@ class ThirdViewController: UIViewController {
          let characterArray:Array<character> = [rexa, arcturus, deimos, fermi]
          let playerSelection = characterArray[playerChoice]
          let enemySelection = characterArray.randomElement()
-        
+        special.text = "SP: \(healingSpell)"
         
         playerImageView.image = UIImage(named: nameArracy[playerChoice])
         enemyImageView.image = UIImage(named: enemySelection!.name)
@@ -172,6 +173,7 @@ class ThirdViewController: UIViewController {
             healButton.isEnabled = false
             
         }
+        
             
             
         
@@ -268,6 +270,7 @@ class ThirdViewController: UIViewController {
                 self.playerHealthLabel.text = "Health: \(self.playerHealth)"
                 self.enemyHealthLabel.text = "Health: \(self.enemyHealth)"
                 self.turnCount = 1
+                self.special.text = "SP: \(self.healingSpell)"
             })
             playerLoseAlert.addAction(tryAgain)
             playerLoseAlert.addAction(menu)
