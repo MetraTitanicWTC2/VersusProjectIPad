@@ -14,10 +14,16 @@ class SecondViewController: UIViewController {
     var selectedImage = ""
     var playerSelected = false
     
+    @IBOutlet weak var lossLabel: UILabel!
+    @IBOutlet weak var winLabel: UILabel!
     @IBOutlet weak var selectionImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let wins = userDefaults.integer(forKey: "wins")
+        let losses = userDefaults.integer(forKey: "losses")
+        winLabel.text = "Wins: \(wins)"
+        lossLabel.text = "Losses: \(losses)"
         
         // Do any additional setup after loading the view.
     }

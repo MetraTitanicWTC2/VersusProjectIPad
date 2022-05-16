@@ -9,6 +9,7 @@ import UIKit
 let userDefaults = UserDefaults.standard
 
 class ThirdViewController: UIViewController {
+
     var wins = 0
     var losses = 0
     
@@ -290,8 +291,15 @@ class ThirdViewController: UIViewController {
             playerLoseAlert.addAction(tryAgain)
             playerLoseAlert.addAction(menu)
             present(playerLoseAlert, animated: true)
+            
+            if userDefaults.integer(forKey: "losses") != nil {
+                var storedLosses = userDefaults.integer(forKey: "losses")
+                storedLosses += 1
+                userDefaults.set(storedLosses, forKey: "losses")
+            } else {
             losses += 1
             userDefaults.set(losses, forKey: "losses")
+            }
         }
     
         if enemyHealth <= 0 {
@@ -311,8 +319,16 @@ class ThirdViewController: UIViewController {
             playerWinAlert.addAction(menu)
             playerWinAlert.addAction(tryAgain)
             present(playerWinAlert, animated: true)
-            wins += 1
-            userDefaults.set(wins, forKey: "wins")
+            
+            
+            if userDefaults.integer(forKey: "wins") != nil {
+                var storedWins = userDefaults.integer(forKey: "wins")
+                storedWins += 1
+                userDefaults.set(storedWins, forKey: "wins")
+            } else {
+                wins += 1
+                userDefaults.set(wins, forKey: "wins")
+            }
         }
     }
     
