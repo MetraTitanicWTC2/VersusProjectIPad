@@ -329,6 +329,30 @@ Attack: 1500
                                     <fontDescription key="titleFontDescription" type="system" pointSize="41"/>
                                 </buttonConfiguration>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OH4-hp-tHJ">
+                                <rect key="frame" x="252" y="1005" width="110" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlR-33-ZzT">
+                                <rect key="frame" x="252" y="1090" width="110" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbq-0U-DC1">
+                                <rect key="frame" x="252" y="1181" width="110" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QKG-it-ap4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -340,7 +364,10 @@ Attack: 1500
                         <outlet property="enemyImageView" destination="ahw-hG-97b" id="gCg-1T-hx1"/>
                         <outlet property="healButton" destination="oFX-f2-ZtU" id="V9Y-ov-HRs"/>
                         <outlet property="magic" destination="rKT-Yc-XBh" id="9VY-Xt-2Pi"/>
-                        <outlet property="magicButton" destination="eyp-jb-u55" id="Al0-pg-Is2"/>
+                        <outlet property="magicButton" destination="CoL-FM-Qvm" id="Pin-Pq-BO1"/>
+                        <outlet property="magicChoice1" destination="OH4-hp-tHJ" id="3RD-G8-6DR"/>
+                        <outlet property="magicChoice2" destination="nlR-33-ZzT" id="Yt8-hj-DmR"/>
+                        <outlet property="magicChoice3" destination="tbq-0U-DC1" id="D1S-Mt-Fbn"/>
                         <outlet property="playerAttackLog" destination="7R4-cq-9o6" id="OEb-K8-koa"/>
                         <outlet property="playerHealthLabel" destination="YXU-Fl-UjJ" id="Dmo-V5-WIe"/>
                         <outlet property="playerImageView" destination="iSc-sA-0ww" id="exY-R1-Soz"/>
