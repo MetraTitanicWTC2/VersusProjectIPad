@@ -59,9 +59,12 @@ class ThirdViewController: UIViewController {
     @IBOutlet weak var enemyImageView: UIImageView!
     @IBOutlet weak var special: UILabel!
     @IBOutlet weak var playerImageView: UIImageView!
+    @IBOutlet weak var EffectsImageView: UIImageView!
+    @IBOutlet weak var EnemyEffectsView: UIImageView!
+    var enemyEffects: [UIImage]!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
         turnCounterLabel.text = "Turn \(turnCount)"
          let characterArray:Array<character> = [rexa, arcturus, deimos, fermi]
          let playerSelection = characterArray[playerChoice]
@@ -100,12 +103,13 @@ class ThirdViewController: UIViewController {
         intHeal = Int(healingSpell)
         // Do any additional setup after loading the view.
         
+        
     }
         @IBAction func whenAttacking(_ sender: Any) {
         let attack = Int.random(in: playerAttackLow...playerAttackHigh)
+            enemyEffect((Any).self)
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         playerAttackLog.text = "You attacked for \(attack) damage!"
-            sleep(1)
             let enemyChoice = enemyChoiceArracy.randomElement()
             if enemyChoice == "attack" {
                 
@@ -339,7 +343,16 @@ class ThirdViewController: UIViewController {
             }
         }
     }
-    
+    func enemyEffect(_ sender: Any){
+        var cut1: UIImage! = UIImage(named: "Cut_1")
+        var cut2: UIImage! = UIImage(named: "Cut_2")
+        var cut3: UIImage! = UIImage(named: "Cut_3")
+        var cut4: UIImage! = UIImage(named: "Cut_4")
+        enemyEffects = [cut1, cut2, cut3, cut4]
+        let animatedEffectE: UIImage! = UIImage.animatedImage(with: enemyEffects, duration: 1.0)
+        EnemyEffectsView.image = animatedEffectE
+        sleep(1)
+    }
     @IBAction func whenMagicButtonTapped(_ sender: Any) {
         magicChoice1.setTitle("\(magicSpell1)", for: UIControl.State.normal)
         magicChoice2.setTitle("\(magicSpell2)", for: UIControl.State.normal)
