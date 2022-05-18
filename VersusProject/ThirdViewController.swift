@@ -387,9 +387,75 @@ class ThirdViewController: UIViewController {
         gameResultDetector()
     }
             
+    @IBAction func magicAttack2(_ sender: Any) {
+        let magic2 = Int(magicDamage2)
+        enemyHealthLabel.text = "Health: \(enemyHealth)"
+        playerAttackLog.text = "You attacked for \(magic2) damage!"
+    
             
-            
+            let enemyChoice = enemyChoiceArracy.randomElement()
+            if enemyChoice == "attack" {
+                
+                enemyHealth -= magicDamage2
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+                enemyAttackHealthUpdate(attack: enemyAttackValue)
+            } else if enemyChoice == "defend" {
+                enemyDefendedPlayerAttack(attack: magicDamage1)
+               
+            } else if enemyChoice == "heal" {
+                enemyHealth -= magicDamage2
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
+            }
+        
+
+        
+
+            turnCount += 1
+            turnCounterLabel.text = "Turn \(turnCount)"
+        gameResultDetector()
         }
+    @IBAction func magicAttack3(_ sender: Any) {
+        let magic3 = Int(magicDamage2)
+        enemyHealthLabel.text = "Health: \(enemyHealth)"
+        playerAttackLog.text = "You attacked for \(magic3) damage!"
+    
+            
+            let enemyChoice = enemyChoiceArracy.randomElement()
+            if enemyChoice == "attack" {
+                
+                enemyHealth -= magicDamage3
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+                enemyAttackHealthUpdate(attack: enemyAttackValue)
+            } else if enemyChoice == "defend" {
+                enemyDefendedPlayerAttack(attack: magicDamage1)
+               
+            } else if enemyChoice == "heal" {
+                enemyHealth -= magicDamage3
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
+            }
+        
+
+        
+
+            turnCount += 1
+            turnCounterLabel.text = "Turn \(turnCount)"
+        gameResultDetector()
+        }
+    }
+
+
     
     
 
