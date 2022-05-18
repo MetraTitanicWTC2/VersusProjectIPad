@@ -113,7 +113,7 @@ class ThirdViewController: UIViewController {
         let attack = Int.random(in: playerAttackLow...playerAttackHigh)
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         playerAttackLog.text = "You attacked for \(attack) damage!"
-            
+            sleep(1)
             let enemyChoice = enemyChoiceArracy.randomElement()
             if enemyChoice == "attack" {
                 
@@ -143,7 +143,6 @@ class ThirdViewController: UIViewController {
     }
     @IBAction func whenDefending(_ sender: Any) {
         let attack = 0
-        
         let enemyChoice = enemyChoiceArracy.randomElement()
         if enemyChoice == "attack" {
             enemyHealth -= attack
@@ -153,15 +152,17 @@ class ThirdViewController: UIViewController {
             let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
             let enemyAttackDouble = (1 - playerDefense) * Double(enemyAttackValue)
             let enemyAttack = Int(enemyAttackDouble)
+            sleep(1)
             playerDefendedEnemyAttackHealthUpdate(attack: enemyAttack, originalAttack: enemyAttackValue)
             enemyAttackHealthUpdate(attack: enemyAttackValue)
         } else if enemyChoice == "defend" {
             enemyDefendedPlayerAttack(attack: attack)
             playerAttackLog.text = "You defended against 0 damage!"
+            sleep(1)
         } else if enemyChoice == "heal" {
             enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
             playerAttackLog.text = "You defended against 0 damage!"
-
+            sleep(1)
         }
         
         
@@ -181,6 +182,7 @@ class ThirdViewController: UIViewController {
             playerHealth = playerMaxHealth
             playerHealthLabel.text = "Health: \(playerHealth)"
             playerAttackLog.text = "You healed to full health!"
+            sleep(1)
             intHeal -= 20
             special.text = "SP: \(intHeal)"
 
@@ -285,6 +287,7 @@ class ThirdViewController: UIViewController {
     
     func gameResultDetector() {
         if playerHealth <= 0 {
+            sleep(1)
             view.isHidden = true
             let playerLoseAlert = UIAlertController(title: "You Lose!", message: nil, preferredStyle: UIAlertController.Style.alert)
             let menu = UIAlertAction(title: "Main Menu", style: .default, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
@@ -314,6 +317,7 @@ class ThirdViewController: UIViewController {
         }
     
         if enemyHealth <= 0 {
+            sleep(1)
             view.isHidden = true
             let playerWinAlert = UIAlertController(title: "You Win!", message: nil, preferredStyle: UIAlertController.Style.alert)
             let menu = UIAlertAction(title: "Main Menu", style: .cancel, handler: {action in self.performSegue(withIdentifier: "Menu", sender: Any?.self)})
