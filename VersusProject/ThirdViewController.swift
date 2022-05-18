@@ -15,6 +15,10 @@ class ThirdViewController: UIViewController {
     
     var intHeal = 0
     
+    var magicDamage1 = 0
+    var magicDamage2 = 0
+    var magicDamage3 = 0
+    
     var playerDefense = 0.0
     var playerMaxHealth = 0
     var playerHealLow = 0
@@ -39,10 +43,10 @@ class ThirdViewController: UIViewController {
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     let enemyChoiceArracy = ["attack","defend","heal","attack"]
     
-    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 450, attackHigh: 550, healLow: 600, healHigh: 700, healingPower: 500, magicAttack1: "Toxic Needle Fall", magicAttack2: "Focused Noxious Impact", magicAttack3: "Secret Poison Ambush", magicPower: 450 )
-    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 650, attackHigh: 750, healLow: 300, healHigh: 400, healingPower: 300, magicAttack1: "Savage Magma Cut", magicAttack2: "Reckless Bubble Drain", magicAttack3: "Angel's Dragon Slaying Aura", magicPower: 300)
-    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 450, attackHigh: 550, healLow: 400, healHigh: 700, healingPower: 400, magicAttack1: "Earth Blast", magicAttack2: "Emerald Thorn Surge", magicAttack3: "Grand Chaos Hit", magicPower: 350)
-    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 300, attackHigh: 400, healLow: 500, healHigh: 600, healingPower: 440, magicAttack1: "White Lotus Binding", magicAttack2: "Secret Frost Technique", magicAttack3: "Glacier Spider Hypnotizing Blade", magicPower: 275)
+    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 300, attackHigh: 450, healLow: 600, healHigh: 700, healingPower: 500, magicAttack1: "Toxic Needle Fall", magicAttack2: "Focused Noxious Impact", magicAttack3: "Secret Poison Ambush", magicPower: 450, magicHigh1: 450, magicHigh2: 550, magicHigh3: 700 )
+    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 500, attackHigh: 650, healLow: 300, healHigh: 400, healingPower: 300, magicAttack1: "Savage Magma Cut", magicAttack2: "Reckless Bubble Drain", magicAttack3: "Angel's Dragon Slaying Aura", magicPower: 300, magicHigh1: 300, magicHigh2: 400, magicHigh3: 500)
+    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 250, attackHigh: 400, healLow: 400, healHigh: 700, healingPower: 400, magicAttack1: "Earth Blast", magicAttack2: "Emerald Thorn Surge", magicAttack3: "Grand Chaos Hit", magicPower: 350, magicHigh1: 375, magicHigh2: 475, magicHigh3: 575)
+    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 200, attackHigh: 300, healLow: 500, healHigh: 600, healingPower: 440, magicAttack1: "White Lotus Binding", magicAttack2: "Secret Frost Technique", magicAttack3: "Glacier Spider Hypnotizing Blade", magicPower: 275, magicHigh1: 325, magicHigh2: 450, magicHigh3: 575)
    var turnCount = 1
     
     @IBOutlet weak var magicChoice3: UIButton!
@@ -83,10 +87,14 @@ class ThirdViewController: UIViewController {
         playerHealHigh = playerSelection.healHigh
         playerHealthLabel.text = "Health: \(playerHealth)"
         healingSpell = playerSelection.healingPower
+        
         magicSpell1 = playerSelection.magicAttack1
         magicSpell2 = playerSelection.magicAttack2
         magicSpell3 = playerSelection.magicAttack3
         magicInt = playerSelection.magicPower
+        magicDamage1 = playerSelection.magicHigh1
+        magicDamage2 = playerSelection.magicHigh2
+        magicDamage3 = playerSelection.magicHigh3
         
         enemyDefense = enemySelection!.defense
         enemyHealLow = enemySelection!.healLow
@@ -174,7 +182,6 @@ class ThirdViewController: UIViewController {
         let currentHealth = playerHealth
         let healedHealth = playerHealth + playerHeal
         let totalHealed = healedHealth - currentHealth
-        let specialSpell = 0
         if healedHealth > playerMaxHealth {
             playerHealth = playerMaxHealth
             playerHealthLabel.text = "Health: \(playerHealth)"
@@ -358,4 +365,115 @@ class ThirdViewController: UIViewController {
         magicChoice2.setTitle("\(magicSpell2)", for: UIControl.State.normal)
         magicChoice3.setTitle("\(magicSpell3)", for: UIControl.State.normal)
     }
-}
+    @IBAction func magicAttack1(_ sender: Any) {
+            
+        let magic1 = Int(magicDamage1)
+        enemyHealthLabel.text = "Health: \(enemyHealth)"
+        playerAttackLog.text = "You attacked for \(magic1) damage!"
+    
+            
+            let enemyChoice = enemyChoiceArracy.randomElement()
+            if enemyChoice == "attack" {
+                
+                enemyHealth -= magicDamage1
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+                enemyAttackHealthUpdate(attack: enemyAttackValue)
+            } else if enemyChoice == "defend" {
+                enemyDefendedPlayerAttack(attack: magicDamage1)
+               
+            } else if enemyChoice == "heal" {
+                enemyHealth -= magicDamage1
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
+            }
+        
+
+        
+
+            turnCount += 1
+            turnCounterLabel.text = "Turn \(turnCount)"
+        gameResultDetector()
+    }
+            
+    @IBAction func magicAttack2(_ sender: Any) {
+        let magic2 = Int(magicDamage2)
+        enemyHealthLabel.text = "Health: \(enemyHealth)"
+        playerAttackLog.text = "You attacked for \(magic2) damage!"
+    
+            
+            let enemyChoice = enemyChoiceArracy.randomElement()
+            if enemyChoice == "attack" {
+                
+                enemyHealth -= magicDamage2
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+                enemyAttackHealthUpdate(attack: enemyAttackValue)
+            } else if enemyChoice == "defend" {
+                enemyDefendedPlayerAttack(attack: magicDamage1)
+               
+            } else if enemyChoice == "heal" {
+                enemyHealth -= magicDamage2
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
+            }
+        
+
+        
+
+            turnCount += 1
+            turnCounterLabel.text = "Turn \(turnCount)"
+        gameResultDetector()
+        }
+    @IBAction func magicAttack3(_ sender: Any) {
+        let magic3 = Int(magicDamage3)
+        enemyHealthLabel.text = "Health: \(enemyHealth)"
+        playerAttackLog.text = "You attacked for \(magic3) damage!"
+    
+            
+            let enemyChoice = enemyChoiceArracy.randomElement()
+            if enemyChoice == "attack" {
+                
+                enemyHealth -= magicDamage3
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+                enemyAttackHealthUpdate(attack: enemyAttackValue)
+            } else if enemyChoice == "defend" {
+                enemyDefendedPlayerAttack(attack: magicDamage1)
+               
+            } else if enemyChoice == "heal" {
+                enemyHealth -= magicDamage3
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
+            }
+        
+
+        
+
+            turnCount += 1
+            turnCounterLabel.text = "Turn \(turnCount)"
+        gameResultDetector()
+        }
+    }
+
+
+    
+    
+
+
+
+
+
+
