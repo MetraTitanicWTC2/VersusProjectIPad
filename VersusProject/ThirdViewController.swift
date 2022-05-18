@@ -421,7 +421,7 @@ class ThirdViewController: UIViewController {
         gameResultDetector()
         }
     @IBAction func magicAttack3(_ sender: Any) {
-        let magic3 = Int(magicDamage2)
+        let magic3 = Int(magicDamage3)
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         playerAttackLog.text = "You attacked for \(magic3) damage!"
     
