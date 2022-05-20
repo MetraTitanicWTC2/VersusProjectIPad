@@ -137,9 +137,6 @@ class ThirdViewController: UIViewController {
                 }
                 enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
             }
-        
-
-        
 
             turnCount += 1
             turnCounterLabel.text = "Turn \(turnCount)"
@@ -351,14 +348,15 @@ class ThirdViewController: UIViewController {
         }
     }
     func enemyEffect(_ sender: Any){
-        var cut1: UIImage! = UIImage(named: "Cut_1")
-        var cut2: UIImage! = UIImage(named: "Cut_2")
-        var cut3: UIImage! = UIImage(named: "Cut_3")
-        var cut4: UIImage! = UIImage(named: "Cut_4")
-        enemyEffects = [cut1, cut2, cut3, cut4]
-        let animatedEffectE: UIImage! = UIImage.animatedImage(with: enemyEffects, duration: 1.0)
-        EnemyEffectsView.image = animatedEffectE
-        sleep(1)
+        let cut1: UIImage! = UIImage(named: "Cut_1")
+        let cut2: UIImage! = UIImage(named: "Cut_2")
+        let cut3: UIImage! = UIImage(named: "Cut_3")
+        let cut4: UIImage! = UIImage(named: "Cut_4")
+        EnemyEffectsView.animationImages = [cut1, cut2, cut3, cut4]
+        EnemyEffectsView.animationRepeatCount = 1
+        EnemyEffectsView.animationDuration = 0.6
+        EnemyEffectsView.startAnimating()
+        
     }
     @IBAction func whenMagicButtonTapped(_ sender: Any) {
         magicChoice1.setTitle("\(magicSpell1)", for: UIControl.State.normal)
