@@ -124,7 +124,7 @@ class ThirdViewController: UIViewController {
 
             let enemyChoice = enemyChoiceArracy.randomElement()
             if enemyChoice == "attack" {
-                
+                selfEffect((Any).self)
                 enemyHealth -= attack
                 if enemyHealth < 0 {
                     enemyHealth = 0
@@ -151,6 +151,7 @@ class ThirdViewController: UIViewController {
         let enemyChoice = enemyChoiceArracy.randomElement()
         if enemyChoice == "attack" {
             enemyHealth -= attack
+            selfEffect((Any).self)
             if enemyHealth < 0 {
                 enemyHealth = 0
             }
@@ -166,6 +167,7 @@ class ThirdViewController: UIViewController {
             sleep(1)
         } else if enemyChoice == "heal" {
             enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
+            enemyHealEffect(_sender: (Any).self)
             playerAttackLog.text = "You defended against 0 damage!"
             sleep(1)
         }
@@ -212,13 +214,17 @@ class ThirdViewController: UIViewController {
         
         let enemyChoice = enemyChoiceArracy.randomElement()
         if enemyChoice == "attack" {
+            selfEffect((Any).self)
             let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
             enemyAttackHealthUpdate(attack: enemyAttackValue)
 //            playerAttackLog.text = "Enemy attacked after you healed for \(totalHealed)!"
         } else if enemyChoice == "defend" {
             enemyDefendedPlayerAttack(attack: attack)
+            selfHealEffect(_sender: (Any).self)
         } else if enemyChoice == "heal" {
+            selfHealEffect(_sender: (Any).self)
             enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
+            enemyHealEffect(_sender: (Any).self)
         }
         
         turnCount += 1
@@ -281,12 +287,11 @@ class ThirdViewController: UIViewController {
             enemyHealth = maxHealth
             enemyHealthLabel.text = "Health: \(enemyHealth)"
             enemyAttackLog.text = "Enemy healed to full health!"
-
         } else {
             enemyHealth = healedHealth
             enemyHealthLabel.text = "Health: \(enemyHealth)"
             enemyAttackLog.text = "Enemy healed for \(totalHealed)!"
-
+            
         }
     }
     
@@ -362,6 +367,58 @@ class ThirdViewController: UIViewController {
         EnemyEffectsView.animationDuration = 0.6
         EnemyEffectsView.startAnimating()
         
+    }
+    func selfEffect(_ sender: Any){
+        let cut1: UIImage! = UIImage(named: "Cut_1")
+        let cut2: UIImage! = UIImage(named: "Cut_2")
+        let cut3: UIImage! = UIImage(named: "Cut_3")
+        let cut4: UIImage! = UIImage(named: "Cut_4")
+        EffectsImageView.animationImages = [cut1, cut2, cut3, cut4]
+        EffectsImageView.animationRepeatCount = 1
+        EffectsImageView.animationDuration = 0.6
+        EffectsImageView.startAnimating()
+        
+    }
+    func enemyHealEffect(_sender: Any){
+        let heal1: UIImage! = UIImage(named: "Heal1")
+        let heal2: UIImage! = UIImage(named: "Heal2")
+        let heal3: UIImage! = UIImage(named: "Heal3")
+        let heal4: UIImage! = UIImage(named: "Heal4")
+        let heal5: UIImage! = UIImage(named: "Heal5")
+        let heal6: UIImage! = UIImage(named: "Heal6")
+        let heal7: UIImage! = UIImage(named: "Heal7")
+        let heal8: UIImage! = UIImage(named: "Heal8")
+        let heal9: UIImage! = UIImage(named: "Heal9")
+        let heal10: UIImage! = UIImage(named: "Heal10")
+        let heal11: UIImage! = UIImage(named: "Heal11")
+        let heal12: UIImage! = UIImage(named: "Heal12")
+        let heal13: UIImage! = UIImage(named: "Heal13")
+        let heal14: UIImage! = UIImage(named: "Heal14")
+        EnemyEffectsView.animationImages = [heal1, heal2, heal3, heal4, heal5, heal6, heal7, heal8, heal9, heal10, heal11, heal12, heal13, heal14]
+        EnemyEffectsView.animationRepeatCount = 1
+        EnemyEffectsView.animationDuration = 0.6
+        EnemyEffectsView.startAnimating()
+    }
+    
+    func selfHealEffect(_sender: Any){
+        let heal1: UIImage! = UIImage(named: "Heal1")
+        let heal2: UIImage! = UIImage(named: "Heal2")
+        let heal3: UIImage! = UIImage(named: "Heal3")
+        let heal4: UIImage! = UIImage(named: "Heal4")
+        let heal5: UIImage! = UIImage(named: "Heal5")
+        let heal6: UIImage! = UIImage(named: "Heal6")
+        let heal7: UIImage! = UIImage(named: "Heal7")
+        let heal8: UIImage! = UIImage(named: "Heal8")
+        let heal9: UIImage! = UIImage(named: "Heal9")
+        let heal10: UIImage! = UIImage(named: "Heal10")
+        let heal11: UIImage! = UIImage(named: "Heal11")
+        let heal12: UIImage! = UIImage(named: "Heal12")
+        let heal13: UIImage! = UIImage(named: "Heal13")
+        let heal14: UIImage! = UIImage(named: "Heal14")
+        EffectsImageView.animationImages = [heal1, heal2, heal3, heal4, heal5, heal6, heal7, heal8, heal9, heal10, heal11, heal12, heal13, heal14]
+        EffectsImageView.animationRepeatCount = 1
+        EffectsImageView.animationDuration = 0.6
+        EffectsImageView.startAnimating()
     }
     @IBAction func whenMagicButtonTapped(_ sender: Any) {
         magicChoice1.setTitle("\(magicSpell1)", for: UIControl.State.normal)
