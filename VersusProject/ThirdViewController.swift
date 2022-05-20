@@ -14,6 +14,7 @@ class ThirdViewController: UIViewController {
     var losses = 0
     
     var intHeal = 0
+    var intMP = 0
     
     var magicDamage1 = 0
     var magicDamage2 = 0
@@ -106,6 +107,7 @@ class ThirdViewController: UIViewController {
         enemyAttackHigh = enemySelection!.attackHigh
         
         intHeal = Int(healingSpell)
+        intMP = Int(magicInt)
         // Do any additional setup after loading the view.
         
     }
@@ -114,6 +116,7 @@ class ThirdViewController: UIViewController {
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         playerAttackLog.text = "You attacked for \(attack) damage!"
             sleep(1)
+
             let enemyChoice = enemyChoiceArracy.randomElement()
             if enemyChoice == "attack" {
                 
@@ -301,6 +304,7 @@ class ThirdViewController: UIViewController {
                 self.enemyHealthLabel.text = "Health: \(self.enemyHealth)"
                 self.turnCount = 1
                 self.special.text = "SP: \(self.healingSpell)"
+                self.magic.text = "MP: \(self.magicInt)"
             })
             playerLoseAlert.addAction(tryAgain)
             playerLoseAlert.addAction(menu)
@@ -357,7 +361,18 @@ class ThirdViewController: UIViewController {
         let magic1 = Int(magicDamage1)
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         playerAttackLog.text = "You attacked for \(magic1) damage!"
-    
+        intMP -= 25
+        magic.text = "MP: \(intMP)"
+//        if magic.text! <= "MP: 24"
+        if intMP <= 24 {
+            let magicalAlert1 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert1 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert1.addAction(magicAlert1)
+            present(magicalAlert1, animated: true)
+            magicChoice1.isEnabled = false
+            magicButton.isEnabled = false
+        }
             
             let enemyChoice = enemyChoiceArracy.randomElement()
             if enemyChoice == "attack" {
@@ -386,11 +401,23 @@ class ThirdViewController: UIViewController {
             turnCounterLabel.text = "Turn \(turnCount)"
         gameResultDetector()
     }
+    
             
     @IBAction func magicAttack2(_ sender: Any) {
         let magic2 = Int(magicDamage2)
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         playerAttackLog.text = "You attacked for \(magic2) damage!"
+        intMP -= 35
+        magic.text = "MP: \(intMP)"
+//        if magic.text! <= "MP: 34" {
+        if intMP <= 34 {
+            let magicalAlert2 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert2 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert2.addAction(magicAlert2)
+            present(magicalAlert2, animated: true)
+            magicChoice2.isEnabled = false
+        }
     
             
             let enemyChoice = enemyChoiceArracy.randomElement()
@@ -424,7 +451,17 @@ class ThirdViewController: UIViewController {
         let magic3 = Int(magicDamage3)
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         playerAttackLog.text = "You attacked for \(magic3) damage!"
-    
+        intMP -= 50
+        magic.text = "MP: \(intMP)"
+//        if magic.text! <= "MP: 49" {
+        if intMP <= 49 {
+            let magicalAlert3 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert3 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert3.addAction(magicAlert3)
+            present(magicalAlert3, animated: true)
+            magicChoice3.isEnabled = false
+        }
             
             let enemyChoice = enemyChoiceArracy.randomElement()
             if enemyChoice == "attack" {
