@@ -44,12 +44,16 @@ class ThirdViewController: UIViewController {
     let nameArracy = ["Rexa","Arcturus","Deimos","Fermi"]
     let enemyChoiceArracy = ["attack","defend","heal","attack"]
     
-    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 300, attackHigh: 450, healLow: 600, healHigh: 700, healingPower: 500, magicAttack1: "Toxic Needle Fall", magicAttack2: "Focused Noxious Impact", magicAttack3: "Secret Poison Ambush", magicPower: 450, magicHigh1: 450, magicHigh2: 550, magicHigh3: 700 )
-    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 500, attackHigh: 650, healLow: 300, healHigh: 400, healingPower: 300, magicAttack1: "Savage Magma Cut", magicAttack2: "Reckless Bubble Drain", magicAttack3: "Angel's Dragon Slaying Aura", magicPower: 300, magicHigh1: 300, magicHigh2: 400, magicHigh3: 500)
-    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 250, attackHigh: 400, healLow: 400, healHigh: 700, healingPower: 400, magicAttack1: "Earth Blast", magicAttack2: "Emerald Thorn Surge", magicAttack3: "Grand Chaos Hit", magicPower: 350, magicHigh1: 375, magicHigh2: 475, magicHigh3: 575)
-    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 200, attackHigh: 300, healLow: 500, healHigh: 600, healingPower: 440, magicAttack1: "White Lotus Binding", magicAttack2: "Secret Frost Technique", magicAttack3: "Glacier Spider Hypnotizing Blade", magicPower: 275, magicHigh1: 325, magicHigh2: 450, magicHigh3: 575)
+    let rexa = character(name: "Rexa", health: 2000, defense: 0.2, attackLow: 300, attackHigh: 450, healLow: 600, healHigh: 700, healingPower: 400, magicAttack1: "Toxic Needle Fall", magicAttack2: "Focused Noxious Impact", magicAttack3: "Secret Poison Ambush", magicPower: 450, magicHigh1: 450, magicHigh2: 550, magicHigh3: 700, specialAttack1: "Crystal Fang", specialAttack2: "Illusion Claw", specialAttack3: "Stone Slash", specialHigh1: 300, specialHigh2: 400, specialHigh3: 505)
+    let arcturus = character(name: "Arcturus", health: 3500, defense: 0.2, attackLow: 500, attackHigh: 650, healLow: 300, healHigh: 400, healingPower: 450, magicAttack1: "Savage Magma Cut", magicAttack2: "Reckless Bubble Drain", magicAttack3: "Angel's Dragon Slaying Aura", magicPower: 300, magicHigh1: 300, magicHigh2: 400, magicHigh3: 500, specialAttack1: "Enchanted HellFire Wave", specialAttack2: "Star Slash", specialAttack3: "Clone Bust", specialHigh1: 400, specialHigh2: 550, specialHigh3: 850)
+    let deimos = character(name: "Deimos", health: 2500, defense: 0.25, attackLow: 250, attackHigh: 400, healLow: 400, healHigh: 700, healingPower: 350, magicAttack1: "Earth Blast", magicAttack2: "Emerald Thorn Surge", magicAttack3: "Grand Chaos Hit", magicPower: 350, magicHigh1: 375, magicHigh2: 475, magicHigh3: 575, specialAttack1: "Waterfall Force", specialAttack2: "Agile Demon Stomp", specialAttack3: "Light Firefly Strikinh Grass", specialHigh1: 375, specialHigh2: 475, specialHigh3: 575)
+    let fermi = character(name: "Fermi", health: 3000, defense: 0.35, attackLow: 200, attackHigh: 300, healLow: 500, healHigh: 600, healingPower: 440, magicAttack1: "White Lotus Binding", magicAttack2: "Secret Frost Technique", magicAttack3: "Glacier Spider Hypnotizing Blade", magicPower: 275, magicHigh1: 325, magicHigh2: 450, magicHigh3: 575, specialAttack1: "Heavenly Snow", specialAttack2: "Obsidian Starlight Charge", specialAttack3: "Draconic Teardrop Fists", specialHigh1: 300, specialHigh2: 400, specialHigh3: 500)
    var turnCount = 1
     
+    @IBOutlet weak var specialChoice3: UIButton!
+    @IBOutlet weak var specialChoice2: UIButton!
+    @IBOutlet weak var specialChoice1: UIButton!
+    @IBOutlet weak var specialButton: UIButton!
     @IBOutlet weak var magicChoice3: UIButton!
     @IBOutlet weak var magicChoice2: UIButton!
     @IBOutlet weak var magicChoice1: UIButton!
@@ -530,7 +534,10 @@ class ThirdViewController: UIViewController {
             turnCounterLabel.text = "Turn \(turnCount)"
         gameResultDetector()
         }
+    @IBAction func whenSpecialButtonTapped(_ sender: Any) {
+        
     }
+}
 
 
     
