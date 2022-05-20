@@ -384,6 +384,8 @@ class ThirdViewController: UIViewController {
             present(magicalAlert1, animated: true)
             magicChoice1.isEnabled = false
             magicButton.isEnabled = false
+            magicChoice2.isEnabled = false
+            magicChoice3.isEnabled = false
         }
             
             let enemyChoice = enemyChoiceArracy.randomElement()
@@ -429,6 +431,16 @@ class ThirdViewController: UIViewController {
             magicalAlert2.addAction(magicAlert2)
             present(magicalAlert2, animated: true)
             magicChoice2.isEnabled = false
+            magicChoice3.isEnabled = false
+        }
+        if intMP <= 24 {
+            let magicalAlert1 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert1 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert1.addAction(magicAlert1)
+            present(magicalAlert1, animated: true)
+            magicChoice1.isEnabled = false
+            magicButton.isEnabled = false
         }
     
             
@@ -465,7 +477,6 @@ class ThirdViewController: UIViewController {
         playerAttackLog.text = "You attacked for \(magic3) damage!"
         intMP -= 50
         magic.text = "MP: \(intMP)"
-//        if magic.text! <= "MP: 49" {
         if intMP <= 49 {
             let magicalAlert3 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
             
@@ -473,6 +484,23 @@ class ThirdViewController: UIViewController {
             magicalAlert3.addAction(magicAlert3)
             present(magicalAlert3, animated: true)
             magicChoice3.isEnabled = false
+        }
+        if intMP <= 34 {
+            let magicalAlert2 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert2 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert2.addAction(magicAlert2)
+            present(magicalAlert2, animated: true)
+            magicChoice2.isEnabled = false
+        }
+        if intMP <= 24 {
+            let magicalAlert1 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert1 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert1.addAction(magicAlert1)
+            present(magicalAlert1, animated: true)
+            magicChoice1.isEnabled = false
+            magicButton.isEnabled = false
         }
             
             let enemyChoice = enemyChoiceArracy.randomElement()
