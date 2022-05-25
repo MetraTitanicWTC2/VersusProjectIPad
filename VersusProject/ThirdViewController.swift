@@ -128,7 +128,7 @@ class ThirdViewController: UIViewController {
         enemyAttackLow = enemySelection!.attackLow
         enemyAttackHigh = enemySelection!.attackHigh
         
-        intHeal = Int(healingSpell)
+        
         intMP = Int(magicInt)
         intSP = Int(healingSpell)
         // Do any additional setup after loading the view.
@@ -210,15 +210,15 @@ class ThirdViewController: UIViewController {
             playerHealthLabel.text = "Health: \(playerHealth)"
             playerAttackLog.text = "You healed to full health!"
             sleep(1)
-            intHeal -= 20
-            special.text = "SP: \(intHeal)"
+            intSP -= 20
+            special.text = "SP: \(intSP)"
 
         } else if healedHealth < playerMaxHealth {
             playerHealth = healedHealth
             playerHealthLabel.text = "Health: \(playerHealth)"
             playerAttackLog.text = "You healed for \(totalHealed)!"
         }
-        if special.text! <= "SP: 14" {
+        if intSP <= 19 {
             let healerAlert = UIAlertController(title: "You can no longer heal", message: nil, preferredStyle: UIAlertController.Style.alert)
             
             let healAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -361,6 +361,8 @@ class ThirdViewController: UIViewController {
                 self.playerHealthLabel.text = "Health: \(self.playerHealth)"
                 self.enemyHealthLabel.text = "Health: \(self.enemyHealth)"
                 self.turnCount = 1
+                self.special.text = "SP: \(self.healingSpell)"
+                self.magic.text = "MP: \(self.magicInt)"
             })
             playerWinAlert.addAction(menu)
             playerWinAlert.addAction(tryAgain)
@@ -645,7 +647,7 @@ class ThirdViewController: UIViewController {
             specialChoice1.isEnabled = false
             specialButton.isEnabled = false
         }
-        if special.text! <= "SP: 14" {
+        if intSP <= 19 {
             let healerAlert = UIAlertController(title: "You can no longer heal", message: nil, preferredStyle: UIAlertController.Style.alert)
             
             let healAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -672,7 +674,10 @@ class ThirdViewController: UIViewController {
                     enemyHealth = 0
                 }
                 enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
-    }
+                turnCount += 1
+                turnCounterLabel.text = "Turn \(turnCount)"
+            gameResultDetector()
+            }
 }
     @IBAction func whenSpecialButton2Tapped(_ sender: Any) {
         let special2 = Int(specialDamage2)
@@ -705,7 +710,7 @@ class ThirdViewController: UIViewController {
             specialChoice1.isEnabled = false
             specialButton.isEnabled = false
         }
-        if special.text! <= "SP: 14" {
+        if intSP <= 19 {
             let healerAlert = UIAlertController(title: "You can no longer heal", message: nil, preferredStyle: UIAlertController.Style.alert)
             
             let healAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -732,13 +737,17 @@ class ThirdViewController: UIViewController {
                     enemyHealth = 0
                 }
                 enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
-    }
+                turnCount += 1
+                turnCounterLabel.text = "Turn \(turnCount)"
+            gameResultDetector()
+            }
+        
 }
     @IBAction func whenSpecialButton3tapped(_ sender: Any) {
         let special3 = Int(specialDamage3)
         enemyHealthLabel.text = "Health: \(enemyHealth)"
         playerAttackLog.text = "You attacked for \(special3) damage!"
-        intSP -= 15
+        intSP -= 45
         special.text = "SP: \(intSP)"
         if intSP <= 44 {
             let magicalAlert3 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
@@ -765,7 +774,7 @@ class ThirdViewController: UIViewController {
             specialChoice1.isEnabled = false
             specialButton.isEnabled = false
         }
-        if special.text! <= "SP: 14" {
+        if intSP <= 19 {
             let healerAlert = UIAlertController(title: "You can no longer heal", message: nil, preferredStyle: UIAlertController.Style.alert)
             
             let healAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -793,7 +802,11 @@ class ThirdViewController: UIViewController {
                     enemyHealth = 0
                 }
                 enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
-    }
+                turnCount += 1
+                turnCounterLabel.text = "Turn \(turnCount)"
+            gameResultDetector()
+            }
+        
 }
     }
 
