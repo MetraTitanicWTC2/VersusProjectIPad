@@ -19,6 +19,9 @@ class ThirdViewController: UIViewController {
     var magicDamage1 = 0
     var magicDamage2 = 0
     var magicDamage3 = 0
+    var specialSpell1 = ""
+    var specialSpell2 = ""
+    var specialSpell3 = ""
     
     var playerDefense = 0.0
     var playerMaxHealth = 0
@@ -100,6 +103,10 @@ class ThirdViewController: UIViewController {
         magicDamage1 = playerSelection.magicHigh1
         magicDamage2 = playerSelection.magicHigh2
         magicDamage3 = playerSelection.magicHigh3
+        
+        specialSpell1 = playerSelection.specialAttack1
+        specialSpell2 = playerSelection.specialAttack2
+        specialSpell3 = playerSelection.specialAttack3
         
         enemyDefense = enemySelection!.defense
         enemyHealLow = enemySelection!.healLow
@@ -592,6 +599,10 @@ class ThirdViewController: UIViewController {
         gameResultDetector()
         }
     @IBAction func whenSpecialButtonTapped(_ sender: Any) {
+        specialChoice1.setTitle("\(specialSpell1)", for: UIControl.State.normal)
+        specialChoice2.setTitle("\(specialSpell2)", for: UIControl.State.normal)
+        specialChoice3.setTitle("\(specialSpell3)", for: UIControl.State.normal)
+
         
     }
 }
