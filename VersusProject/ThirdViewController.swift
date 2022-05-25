@@ -15,6 +15,7 @@ class ThirdViewController: UIViewController {
     
     var intHeal = 0
     var intMP = 0
+    var intSP = 0
     
     var magicDamage1 = 0
     var magicDamage2 = 0
@@ -22,6 +23,9 @@ class ThirdViewController: UIViewController {
     var specialSpell1 = ""
     var specialSpell2 = ""
     var specialSpell3 = ""
+    var specialDamage1 = 0
+    var specialDamage2 = 0
+    var specialDamage3 = 0
     
     var playerDefense = 0.0
     var playerMaxHealth = 0
@@ -83,6 +87,7 @@ class ThirdViewController: UIViewController {
          let enemySelection = characterArray.randomElement()
         special.text = "SP: \(playerSelection.healingPower)"
         magic.text = "MP: \(playerSelection.magicPower)"
+        
 
         
         playerImageView.image = UIImage(named: nameArracy[playerChoice])
@@ -107,6 +112,9 @@ class ThirdViewController: UIViewController {
         specialSpell1 = playerSelection.specialAttack1
         specialSpell2 = playerSelection.specialAttack2
         specialSpell3 = playerSelection.specialAttack3
+        specialDamage1 = playerSelection.specialHigh1
+        specialDamage2 = playerSelection.specialHigh2
+        specialDamage3 = playerSelection.specialHigh3
         
         enemyDefense = enemySelection!.defense
         enemyHealLow = enemySelection!.healLow
@@ -122,6 +130,7 @@ class ThirdViewController: UIViewController {
         
         intHeal = Int(healingSpell)
         intMP = Int(magicInt)
+        intSP = Int(healingSpell)
         // Do any additional setup after loading the view.
         
         
@@ -209,7 +218,7 @@ class ThirdViewController: UIViewController {
             playerHealthLabel.text = "Health: \(playerHealth)"
             playerAttackLog.text = "You healed for \(totalHealed)!"
         }
-        if special.text! <= "SP: 0" {
+        if special.text! <= "SP: 14" {
             let healerAlert = UIAlertController(title: "You can no longer heal", message: nil, preferredStyle: UIAlertController.Style.alert)
             
             let healAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -605,11 +614,194 @@ class ThirdViewController: UIViewController {
 
         
     }
+    @IBAction func whenSpecialChoice1Tapped(_ sender: Any) {
+        let special1 = Int(specialDamage1)
+        enemyHealthLabel.text = "Health: \(enemyHealth)"
+        playerAttackLog.text = "You attacked for \(special1) damage!"
+        intSP -= 15
+        special.text = "SP: \(intSP)"
+        if intSP <= 44 {
+            let magicalAlert3 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert3 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert3.addAction(magicAlert3)
+            present(magicalAlert3, animated: true)
+            specialChoice3.isEnabled = false
+        }
+        if intSP <= 29 {
+            let magicalAlert2 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert2 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert2.addAction(magicAlert2)
+            present(magicalAlert2, animated: true)
+            specialChoice2.isEnabled = false
+        }
+        if intSP <= 14 {
+            let magicalAlert1 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert1 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert1.addAction(magicAlert1)
+            present(magicalAlert1, animated: true)
+            specialChoice1.isEnabled = false
+            specialButton.isEnabled = false
+        }
+        if special.text! <= "SP: 14" {
+            let healerAlert = UIAlertController(title: "You can no longer heal", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let healAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            healerAlert.addAction(healAlert)
+            present(healerAlert, animated: true)
+            healButton.isEnabled = false
+            
+        }
+            let enemyChoice = enemyChoiceArracy.randomElement()
+            if enemyChoice == "attack" {
+                
+                enemyHealth -= magicDamage3
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+                enemyAttackHealthUpdate(attack: enemyAttackValue)
+            } else if enemyChoice == "defend" {
+                enemyDefendedPlayerAttack(attack: magicDamage1)
+               
+            } else if enemyChoice == "heal" {
+                enemyHealth -= magicDamage3
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
+    }
 }
+    @IBAction func whenSpecialButton2Tapped(_ sender: Any) {
+        let special2 = Int(specialDamage2)
+        enemyHealthLabel.text = "Health: \(enemyHealth)"
+        playerAttackLog.text = "You attacked for \(special2) damage!"
+        intSP -= 30
+        special.text = "SP: \(intSP)"
+        if intSP <= 44 {
+            let magicalAlert3 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert3 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert3.addAction(magicAlert3)
+            present(magicalAlert3, animated: true)
+            specialChoice3.isEnabled = false
+        }
+        if intSP <= 29 {
+            let magicalAlert2 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert2 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert2.addAction(magicAlert2)
+            present(magicalAlert2, animated: true)
+            specialChoice2.isEnabled = false
+        }
+        if intSP <= 14 {
+            let magicalAlert1 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert1 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert1.addAction(magicAlert1)
+            present(magicalAlert1, animated: true)
+            specialChoice1.isEnabled = false
+            specialButton.isEnabled = false
+        }
+        if special.text! <= "SP: 14" {
+            let healerAlert = UIAlertController(title: "You can no longer heal", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let healAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            healerAlert.addAction(healAlert)
+            present(healerAlert, animated: true)
+            healButton.isEnabled = false
+            
+        }
+            let enemyChoice = enemyChoiceArracy.randomElement()
+            if enemyChoice == "attack" {
+                
+                enemyHealth -= magicDamage3
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+                enemyAttackHealthUpdate(attack: enemyAttackValue)
+            } else if enemyChoice == "defend" {
+                enemyDefendedPlayerAttack(attack: magicDamage1)
+               
+            } else if enemyChoice == "heal" {
+                enemyHealth -= magicDamage3
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
+    }
+}
+    @IBAction func whenSpecialButton3tapped(_ sender: Any) {
+        let special3 = Int(specialDamage3)
+        enemyHealthLabel.text = "Health: \(enemyHealth)"
+        playerAttackLog.text = "You attacked for \(special3) damage!"
+        intSP -= 15
+        special.text = "SP: \(intSP)"
+        if intSP <= 44 {
+            let magicalAlert3 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert3 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert3.addAction(magicAlert3)
+            present(magicalAlert3, animated: true)
+            specialChoice3.isEnabled = false
+        }
+        if intSP <= 29 {
+            let magicalAlert2 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert2 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert2.addAction(magicAlert2)
+            present(magicalAlert2, animated: true)
+            specialChoice2.isEnabled = false
+        }
+        if intSP <= 14 {
+            let magicalAlert1 = UIAlertController(title: "You can no longer use this Spell", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let magicAlert1 = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            magicalAlert1.addAction(magicAlert1)
+            present(magicalAlert1, animated: true)
+            specialChoice1.isEnabled = false
+            specialButton.isEnabled = false
+        }
+        if special.text! <= "SP: 14" {
+            let healerAlert = UIAlertController(title: "You can no longer heal", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            let healAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            healerAlert.addAction(healAlert)
+            present(healerAlert, animated: true)
+            healButton.isEnabled = false
+            
+        }
+            
+            let enemyChoice = enemyChoiceArracy.randomElement()
+            if enemyChoice == "attack" {
+                
+                enemyHealth -= magicDamage3
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
+                enemyAttackHealthUpdate(attack: enemyAttackValue)
+            } else if enemyChoice == "defend" {
+                enemyDefendedPlayerAttack(attack: magicDamage1)
+               
+            } else if enemyChoice == "heal" {
+                enemyHealth -= magicDamage3
+                if enemyHealth < 0 {
+                    enemyHealth = 0
+                }
+                enemyHealing(enemyHealLow: enemyHealLow, enemyHealHigh: enemyHealHigh, maxHealth: enemyMaxHealth)
+    }
+}
+    }
 
+    
 
     
     
+
 
 
 

@@ -396,6 +396,9 @@ Attack: 1500
                                 <buttonConfiguration key="configuration" style="plain" title="Special">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="41"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="whenSpecialButtonTapped:" destination="Q4H-eP-Sim" eventType="touchUpInside" id="kjz-h2-tz9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azG-M9-msD">
                                 <rect key="frame" x="61" y="1091" width="178" height="67"/>
@@ -404,6 +407,9 @@ Attack: 1500
                                 <buttonConfiguration key="configuration" style="plain" title="">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="31"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="whenSpecialChoice1Tapped:" destination="Q4H-eP-Sim" eventType="touchUpInside" id="500-Rw-Mxg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdr-2a-0d3">
                                 <rect key="frame" x="86" y="1166" width="153" height="55"/>
@@ -412,12 +418,18 @@ Attack: 1500
                                 <buttonConfiguration key="configuration" style="plain" title="">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="whenSpecialButton2Tapped:" destination="Q4H-eP-Sim" eventType="touchUpInside" id="Whc-N3-qpc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb9-Dz-RTK">
                                 <rect key="frame" x="64" y="1248" width="197" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="whenSpecialButton3tapped:" destination="Q4H-eP-Sim" eventType="touchUpInside" id="OWP-33-dSm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QKG-it-ap4"/>
