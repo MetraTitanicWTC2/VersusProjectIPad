@@ -533,7 +533,7 @@ class ThirdViewController: UIViewController {
                 let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
                 enemyAttackHealthUpdate(attack: enemyAttackValue)
             } else if enemyChoice == "defend" {
-                enemyDefendedPlayerAttack(attack: magicDamage1)
+                enemyDefendedPlayerAttack(attack: magicDamage2)
                
             } else if enemyChoice == "heal" {
                 enemyHealth -= magicDamage2
@@ -618,7 +618,7 @@ class ThirdViewController: UIViewController {
     }
     @IBAction func whenSpecialChoice1Tapped(_ sender: Any) {
         let special1 = Int(specialDamage1)
-        enemyHealthLabel.text = "Health: \(enemyHealth)"
+        enemyHealthLabel.text = "Health: \(specialDamage1)"
         playerAttackLog.text = "You attacked for \(special1) damage!"
         intSP -= 15
         special.text = "SP: \(intSP)"
@@ -659,17 +659,17 @@ class ThirdViewController: UIViewController {
             let enemyChoice = enemyChoiceArracy.randomElement()
             if enemyChoice == "attack" {
                 
-                enemyHealth -= magicDamage3
+                enemyHealth -= specialDamage1
                 if enemyHealth < 0 {
                     enemyHealth = 0
                 }
                 let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
                 enemyAttackHealthUpdate(attack: enemyAttackValue)
             } else if enemyChoice == "defend" {
-                enemyDefendedPlayerAttack(attack: magicDamage1)
+                enemyDefendedPlayerAttack(attack: specialDamage1)
                
             } else if enemyChoice == "heal" {
-                enemyHealth -= magicDamage3
+                enemyHealth -= specialDamage1
                 if enemyHealth < 0 {
                     enemyHealth = 0
                 }
@@ -722,17 +722,17 @@ class ThirdViewController: UIViewController {
             let enemyChoice = enemyChoiceArracy.randomElement()
             if enemyChoice == "attack" {
                 
-                enemyHealth -= magicDamage3
+                enemyHealth -= specialDamage2
                 if enemyHealth < 0 {
                     enemyHealth = 0
                 }
                 let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
                 enemyAttackHealthUpdate(attack: enemyAttackValue)
             } else if enemyChoice == "defend" {
-                enemyDefendedPlayerAttack(attack: magicDamage1)
+                enemyDefendedPlayerAttack(attack: specialDamage2)
                
             } else if enemyChoice == "heal" {
-                enemyHealth -= magicDamage3
+                enemyHealth -= specialDamage2
                 if enemyHealth < 0 {
                     enemyHealth = 0
                 }
@@ -787,17 +787,17 @@ class ThirdViewController: UIViewController {
             let enemyChoice = enemyChoiceArracy.randomElement()
             if enemyChoice == "attack" {
                 
-                enemyHealth -= magicDamage3
+                enemyHealth -= specialDamage3
                 if enemyHealth < 0 {
                     enemyHealth = 0
                 }
                 let enemyAttackValue = enemyAttack(enemyAttackLow: enemyAttackLow, enemyAttackHigh: enemyAttackHigh)
                 enemyAttackHealthUpdate(attack: enemyAttackValue)
             } else if enemyChoice == "defend" {
-                enemyDefendedPlayerAttack(attack: magicDamage1)
+                enemyDefendedPlayerAttack(attack: specialDamage3)
                
             } else if enemyChoice == "heal" {
-                enemyHealth -= magicDamage3
+                enemyHealth -= specialDamage3
                 if enemyHealth < 0 {
                     enemyHealth = 0
                 }
